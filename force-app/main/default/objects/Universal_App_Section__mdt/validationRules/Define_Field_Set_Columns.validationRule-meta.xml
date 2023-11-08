@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Define_Field_Set_Columns</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  NOT(ISBLANK(Section_Field_Set__c)),
+  ISPICKVAL(Section_Field_Columns__c,&apos;&apos;)
+)</errorConditionFormula>
+    <errorDisplayField>Section_Field_Columns__c</errorDisplayField>
+    <errorMessage>Please define the number of columns for the field set.</errorMessage>
+</ValidationRule>
