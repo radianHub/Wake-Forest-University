@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Administration</fullName>
+        <default>false</default>
+        <label>Administration</label>
+    </customValue>
+    <customValue>
+        <fullName>College Athletics</fullName>
+        <default>false</default>
+        <label>College Athletics</label>
+    </customValue>
+    <customValue>
+        <fullName>College or University Wide Programming and/or Implementation</fullName>
+        <default>false</default>
+        <label>College or University Wide Programming and/or Implementation</label>
+    </customValue>
+    <customValue>
+        <fullName>Course Development</fullName>
+        <default>false</default>
+        <label>Course Development</label>
+    </customValue>
+    <customValue>
+        <fullName>Discipline Specific Programming and/or Implementation</fullName>
+        <default>false</default>
+        <label>Discipline Specific Programming and/or Implementation</label>
+    </customValue>
+    <customValue>
+        <fullName>Diversity, Equity, Inclusion and Belonging</fullName>
+        <default>false</default>
+        <label>Diversity, Equity, Inclusion and Belonging</label>
+    </customValue>
+    <customValue>
+        <fullName>Measurement and Assessment of Virtue</fullName>
+        <default>false</default>
+        <label>Measurement and Assessment of Virtue</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Development</fullName>
+        <default>false</default>
+        <label>Professional Development</label>
+    </customValue>
+    <customValue>
+        <fullName>Scholarly Research</fullName>
+        <default>false</default>
+        <label>Scholarly Research</label>
+    </customValue>
+    <customValue>
+        <fullName>Student Life</fullName>
+        <default>false</default>
+        <label>Student Life</label>
+    </customValue>
+    <customValue>
+        <fullName>Theoretical Approaches to Character</fullName>
+        <default>false</default>
+        <label>Theoretical Approaches to Character</label>
+    </customValue>
+    <masterLabel>Research Areas</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

@@ -1,0 +1,8 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Hi&nbsp;{{{Recipient.Name}}},<br />
+<br />
+Thank you for registering as a community member.</body>
+</html>

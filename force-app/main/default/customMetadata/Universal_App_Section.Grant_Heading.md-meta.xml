@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Grant Heading</label>
+    <protected>false</protected>
+    <values>
+        <field>AddChildButtonLabel__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ChildFieldSet__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ChildObjectRecordLimit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ChildObject__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ChildTableTitle__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DisplayByDefault__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Order__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Page__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>ParentField__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Section_Body__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Section_Field_Columns__c</field>
+        <value xsi:type="xsd:string">2</value>
+    </values>
+    <values>
+        <field>Section_Field_Flow__c</field>
+        <value xsi:type="xsd:string">Left Right</value>
+    </values>
+    <values>
+        <field>Section_Field_Set__c</field>
+        <value xsi:type="xsd:string">Grant_Heading</value>
+    </values>
+    <values>
+        <field>Section_Header__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Universal_App__c</field>
+        <value xsi:type="xsd:string">Grant_Application</value>
+    </values>
+    <values>
+        <field>conditionalRender__c</field>
+        <value xsi:type="xsd:string">{
+&quot;Fields&quot;: [
+{
+&quot;controllingField&quot;: &quot;Type&quot;,
+&quot;controllingValue&quot;: &quot;Capacity-Building&quot;,
+&quot;actionSections&quot;: [ &quot;Grant_Capacity_Building&quot; ]
+},
+{
+&quot;controllingField&quot;: &quot;Type&quot;,
+&quot;controllingValue&quot;: &quot;Institutional Impact&quot;,
+&quot;actionSections&quot;: [ &quot;Grant_Institutional_Impact&quot; ]
+},
+{
+&quot;controllingField&quot;: &quot;Type&quot;,
+&quot;controllingValue&quot;: &quot;Professional Development&quot;,
+&quot;actionSections&quot;: [ &quot;Grant_Professional_Development&quot; ]
+},
+{
+&quot;controllingField&quot;: &quot;Type&quot;,
+&quot;controllingValue&quot;: &quot;Teacher-Scholar&quot;,
+&quot;actionSections&quot;: [ &quot;Grant_Teacher_Scholar&quot; ]
+}
+]
+}</value>
+    </values>
+    <values>
+        <field>conditionalRequire__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>isEnableChildRecords__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+</CustomMetadata>
