@@ -303,16 +303,6 @@
         <relatedList>RelatedCaseList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>Name</fields>
-        <fields>Contact</fields>
-        <fields>RelatedContact</fields>
-        <fields>PartyRoleRelation</fields>
-        <fields>StartDate</fields>
-        <fields>EndDate</fields>
-        <fields>IsActive</fields>
-        <relatedList>ContactRelations</relatedList>
-    </relatedLists>
-    <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
