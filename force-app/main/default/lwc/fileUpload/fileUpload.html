@@ -1,0 +1,45 @@
+<!-- TODO: need iron out design of the template below - need to figure out spacing -->
+<template>
+	<div if:true={alert} class={alertClass} role="status">
+		<div class="slds-media__figure">
+			<span class={alertSpan} title="alert">
+				<lightning-icon alternative-text="Alert Icon" icon-name={alertIcon} size="x-small" variant="inverse"></lightning-icon>
+			</span>
+		</div>
+		<div class="slds-media__body">
+			<p>{alert}</p>
+		</div>
+	</div>
+	<div class="slds-grid slds-grid_vertical-align-center slds-grid_align-end">
+		<div class="slds-col slds-size_1-of-6">
+			<div class="slds-p-around_medium">
+				<lightning-combobox
+					name="progress"
+					label="File Type"
+					value={fileTypeValue}
+					placeholder="Select File Type"
+					options={items}
+					onchange={handleChange}>
+				</lightning-combobox>
+			</div>
+		</div>
+		<div class="slds-col slds-size_1-of-6">
+			<div class="slds-p-around_medium">
+				<lightning-input type="text" label="Description" onchange={handleInputChange}></lightning-input>
+			</div>
+		</div>
+		<div class="slds-col slds-size_1-of-6">
+			<div class="slds-p-top_x-large slds-p-right_medium slds-p-bottom_medium slds-p-left_medium">
+				<lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file" multiple></lightning-input>
+			</div>
+		</div>
+		<div class="slds-col slds-size_1-of-6">
+			<div class="slds-p-top_x-large slds-p-right_medium slds-p-bottom_medium slds-p-left_medium">
+				<lightning-button variant="success" label="Save File" title="Upload" onclick={saveFile}></lightning-button>
+			</div>
+		</div>
+		<div class="slds-col slds-size_1-of-6">
+			<template if:true={fileName}> {fileName} &nbsp; &nbsp; {fileSize} </template>
+		</div>
+	</div>
+</template>

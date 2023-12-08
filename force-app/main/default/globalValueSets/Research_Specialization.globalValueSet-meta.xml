@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Art &amp; Humanities</fullName>
+        <default>false</default>
+        <label>Art &amp; Humanities</label>
+    </customValue>
+    <customValue>
+        <fullName>Education</fullName>
+        <default>false</default>
+        <label>Education</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Schools</fullName>
+        <default>false</default>
+        <label>Professional Schools</label>
+    </customValue>
+    <customValue>
+        <fullName>Sciences, Technology, Engineering, and Math</fullName>
+        <default>false</default>
+        <label>Sciences, Technology, Engineering, and Math</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Sciences</fullName>
+        <default>false</default>
+        <label>Social Sciences</label>
+    </customValue>
+    <customValue>
+        <fullName>Law</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Law</label>
+    </customValue>
+    <customValue>
+        <fullName>Business</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Health Professions</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Health Professions</label>
+    </customValue>
+    <customValue>
+        <fullName>Engineering</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Engineering</label>
+    </customValue>
+    <customValue>
+        <fullName>Computer and Information Sciences</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Computer and Information Sciences</label>
+    </customValue>
+    <customValue>
+        <fullName>Communication and Journalism</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Communication and Journalism</label>
+    </customValue>
+    <customValue>
+        <fullName>Mathematics</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mathematics</label>
+    </customValue>
+    <customValue>
+        <fullName>Humanities</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Humanities</label>
+    </customValue>
+    <customValue>
+        <fullName>Sciences</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sciences</label>
+    </customValue>
+    <masterLabel>Research Specialization</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

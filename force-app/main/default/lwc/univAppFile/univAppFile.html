@@ -1,0 +1,9 @@
+<template>
+	<lightning-input
+		type="file"
+		variant="label-hidden"
+		name={field.api}
+		accept={field.acceptedFileTypes}
+		onchange={handleChangeFile}></lightning-input>
+	<p>Selected File: {fileName}</p>
+</template>

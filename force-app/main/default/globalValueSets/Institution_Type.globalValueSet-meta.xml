@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>College/University</fullName>
+        <default>false</default>
+        <label>College/University</label>
+    </customValue>
+    <customValue>
+        <fullName>Community College</fullName>
+        <default>false</default>
+        <label>Community College</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Profit Organization</fullName>
+        <default>false</default>
+        <label>Non-Profit Organization</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical School</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Technical School</label>
+    </customValue>
+    <masterLabel>Institution Type</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

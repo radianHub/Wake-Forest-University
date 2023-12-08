@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Registration</label>
+    <protected>false</protected>
+    <values>
+        <field>Boolean_Field__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CSS__c</field>
+        <value xsi:type="xsd:string">.req {
+    color: #ba0517;
+    margin-left: .125rem;
+    margin-right: .125rem;
+}
+
+.altLabel {
+    padding-right: .5rem;
+    padding-top: .25rem;
+    margin-bottom: .125rem;
+    display: flex;
+}
+
+.altLabelContainer {
+    margin-bottom: .5rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
+}</value>
+    </values>
+    <values>
+        <field>Logo_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">Contact</value>
+    </values>
+    <values>
+        <field>Object_with_Boolean__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Page_Redirect__c</field>
+        <value xsi:type="xsd:string">Registration_Success__c</value>
+    </values>
+    <values>
+        <field>Page_Redirect_if_False__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Page_Redirect_if_True__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Post_Submit_Fields__c</field>
+        <value xsi:type="xsd:string">{
+   &quot;AccountId&quot;: &quot;001D400000n0Z7HIAU&quot;
+}</value>
+    </values>
+</CustomMetadata>

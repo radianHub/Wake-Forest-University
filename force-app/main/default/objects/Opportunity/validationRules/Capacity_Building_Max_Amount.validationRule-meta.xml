@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capacity_Building_Max_Amount</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Type, &apos;Capacity-Building&apos;),
+    Amount &gt; 500000
+)</errorConditionFormula>
+    <errorMessage>Maximum amount requested is $500,000 for a Capacity-Building grant</errorMessage>
+</ValidationRule>
