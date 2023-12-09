@@ -116,6 +116,8 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 				this.loadingData = false;
 			})
 			.catch((error) => {
+				console.log('error', error);
+
 				this.alert = JSON.stringify(error);
 				this.alertType = 'error';
 				this.loadingData = false;
@@ -167,6 +169,7 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 					}
 					this.savingData = false;
 				} else if (result.error) {
+					console.log('error', result.error);
 					this.alert = result.error;
 					this.alertType = 'error';
 					this.savingData = false;
@@ -390,7 +393,8 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 			sectionRender.forEach((s) => {
 				const sectionToRender = this.template.querySelectorAll('.' + s);
 				sectionToRender.forEach((a) => {
-					a.style = 'display:block';
+					// a.style = 'display:block';
+					// a.style = true;
 				});
 				this.page.forEach((p) => {
 					if (p.DeveloperName === s) {
@@ -403,7 +407,8 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 			sectionUnrender.forEach((s) => {
 				const sectionToUnrender = this.template.querySelectorAll('.' + s);
 				sectionToUnrender.forEach((a) => {
-					a.style = 'display:none';
+					// a.style = 'display:none';
+					// a.style = false;
 				});
 				this.page.forEach((p) => {
 					if (p.DeveloperName === s) {
@@ -588,6 +593,7 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 				...this.page.map((s) => {
 					let sect = { data: s };
 					if (!s.DisplayByDefault__c) {
+						// sect.display = false;
 						sect.display = 'display:none';
 					}
 					if (s.Section_Field_Set__c) {

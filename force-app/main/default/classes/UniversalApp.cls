@@ -275,7 +275,7 @@ public without sharing class UniversalApp {
 	public static Map<String, Object> submitApp(SObject sObj, String application, String filesString) {
 		Map<String, Object> ret = new Map<String, Object>();
 
-		System.debug('filesString ' + filesString);
+		Id sObjectId;
 
 		try {
 			switch on application {
@@ -289,13 +289,16 @@ public without sharing class UniversalApp {
 					];
 
 					if (existingCommunityMember.size() > 0) {
-						throw new AuraHandledException('A a community member already exists under this email address');
+						throw new CustomException('A a community member already exists under this email address');
 					}
 
-					upsert newCommunityMember;
-					ret.put('data', newCommunityMember.Id);
+					Database.UpsertResult result = Database.upsert(newCommunityMember, false);
+					if (!result.isSuccess()) {
+						throw new CustomException(result.getErrors()[0].getMessage());
+					}
+					ret.put('data', result.Id);
 
-					sObj = newCommunityMember;
+					sObjectId = result.Id;
 				}
 				when 'Grant_Application' {
 					Opportunity newGrantApplication = (Opportunity) sObj;
@@ -315,14 +318,23 @@ public without sharing class UniversalApp {
 					newGrantApplication.CloseDate = Date.today();
 					newGrantApplication.Community_Member__c = existingCommunityMember[0].Id;
 
-					upsert newGrantApplication;
-					ret.put('data', newGrantApplication.Id);
+					Database.UpsertResult result = Database.upsert(newGrantApplication, false);
+					if (!result.isSuccess()) {
+						throw new CustomException(result.getErrors()[0].getMessage());
+					}
 
-					sObj = newGrantApplication;
+					ret.put('data', result.Id);
+
+					sObjectId = result.Id;
 				}
 				when else {
-					upsert sObj;
-					ret.put('data', sObj.Id);
+					Database.UpsertResult result = Database.upsert(sObj, false);
+					if (!result.isSuccess()) {
+						throw new CustomException(result.getErrors()[0].getMessage());
+					}
+
+					ret.put('data', result.Id);
+					sObjectId = result.Id;
 				}
 			}
 
@@ -336,11 +348,12 @@ public without sharing class UniversalApp {
 					newFile.fileName = file.filename;
 					files.add(newFile);
 				}
-				uploadFiles(files, sObj);
+				uploadFiles(files, sObjectId);
 			}
 		} catch (CustomException customException) {
 			ret.put('error', customException.getMessage());
 		} catch (Exception e) {
+			System.debug(e);
 			System.debug(e.getTypeName() + ' | ' + e.getMessage() + ' | ' + e.getStackTraceString());
 			ret.put('error', e.getMessage());
 		}
@@ -349,7 +362,7 @@ public without sharing class UniversalApp {
 	}
 
 	//  public static String uploadFiles(String base64, String filename, String recordId) {
-	public static void uploadFiles(List<File> files, SObject sObj) {
+	public static void uploadFiles(List<File> files, Id sObjectId) {
 		List<ContentVersion> contentVersionsToInsert = new List<ContentVersion>();
 		List<ContentDocumentLink> contentDocumentLinksToInsert = new List<ContentDocumentLink>();
 
@@ -360,7 +373,7 @@ public without sharing class UniversalApp {
 		insert contentVersionsToInsert;
 
 		for (ContentVersion contVersion : contentVersionsToInsert) {
-			ContentDocumentLink cdl = createContentLink(contVersion.Id, sObj.Id);
+			ContentDocumentLink cdl = createContentLink(contVersion.Id, sObjectId);
 			contentDocumentLinksToInsert.add(cdl);
 		}
 		insert contentDocumentLinksToInsert;
