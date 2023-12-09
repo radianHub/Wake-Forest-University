@@ -4,7 +4,7 @@
     <active>true</active>
     <errorConditionFormula>AND(
     ISPICKVAL(Type, &apos;Capacity-Building&apos;),
-    Amount &gt; 500000
+    Amount &gt; 50000
 )</errorConditionFormula>
-    <errorMessage>Maximum amount requested is $500,000 for a Capacity-Building grant</errorMessage>
+    <errorMessage>Maximum amount requested is $50,000 for a Capacity-Building grant</errorMessage>
 </ValidationRule>

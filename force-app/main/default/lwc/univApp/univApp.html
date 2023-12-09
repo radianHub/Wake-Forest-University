@@ -51,9 +51,9 @@
 							for:each={currentPage}
 							for:item="section">
 							<div
+								lwc:if={section.data.DisplayByDefault__c}
 								key={section.data.Id}
-								class="rh_section-div"
-								style={section.display}>
+								class="rh_section-div">
 								<header
 									if:true={section.data.Section_Header__c}
 									class="slds-text-heading_medium">
@@ -107,6 +107,7 @@
 																		{field.altLabel}
 																	</label>
 																</div>
+
 																<template lwc:if={field.isFile}>
 																	<c-univ-app-file
 																		field={field}
@@ -118,7 +119,7 @@
 																		required={field.req}
 																		variant="label-hidden"
 																		value={value}
-																		onfocusout={onChangeHandler}
+																		onchange={onChangeHandler}
 																		disabled={finished}>
 																	</lightning-input-field>
 																</template>
@@ -151,7 +152,7 @@
 																		required={field.req}
 																		value={field.value}
 																		variant="label-hidden"
-																		onfocusout={onChangeHandler}
+																		onchange={onChangeHandler}
 																		disabled={finished}>
 																	</lightning-input-field>
 																</template>
@@ -165,7 +166,7 @@
 																required={field.req}
 																variant="label-stacked"
 																value={value}
-																onfocusout={onChangeHandler}
+																onchange={onChangeHandler}
 																disabled={finished}></lightning-input-field>
 														</template>
 														<template if:false={hasValue}>
@@ -180,7 +181,7 @@
 																	required={field.req}
 																	variant="label-stacked"
 																	value={field.value}
-																	onfocusout={onChangeHandler}
+																	onchange={onChangeHandler}
 																	disabled={finished}></lightning-input-field>
 															</template>
 														</template>
@@ -237,7 +238,6 @@
 						variant="brand"
 						disabled={finished}></lightning-button>
 				</div>
-				<!-- TODO add a close button? -->
 			</div>
 		</template>
 	</article>

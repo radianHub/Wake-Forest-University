@@ -1,9 +1,5 @@
 .altLabel {
-    padding-right: .5rem;
-    padding-top: .25rem;
-    margin-bottom: .125rem;
     display: flex;
-    width: 33%;
 }
 
 .altLabelContainer {
@@ -15,9 +11,10 @@
 }
 
 .req {
-    color: #ba0517;
+    color: #EA001E;
     margin-left: .125rem;
     margin-right: .125rem;
+    padding-top: 0.25rem;
 }
 
 .btnContainer {
