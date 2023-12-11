@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Expected_Field_Label__c</field>
-        <value xsi:type="xsd:string">Have you designed any syllabuses, professional literature, programs, artifacts, or other character education resources you are willing to share with the community?</value>
+        <value xsi:type="xsd:string">Have you designed any syllabuses, professional literature, programs, artifacts, or other character education resources you are willing to share with the community? (.pdf,.doc,.docx,.gdoc)</value>
     </values>
     <values>
         <field>Field_Name__c</field>

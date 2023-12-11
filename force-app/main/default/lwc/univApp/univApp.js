@@ -441,6 +441,18 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 		reader.readAsDataURL(file);
 	}
 
+	handleRemoveFile(event) {
+		console.log('onfileremoved event');
+		const apiName = event.detail.fieldApiName;
+		console.log('apiName', apiName);
+
+		console.log('files', Object.keys(this.files));
+		// console.log('file', this.files[apiName]);
+		delete this.files[apiName];
+
+		console.log('files', Object.keys(this.files));
+	}
+
 	// * HANDLES THE DYNAMIC RENDERING AND REQUIRE OF FIELDS
 	onChangeHandler(event) {
 		this.setPage();
