@@ -111,7 +111,8 @@
 																<template lwc:if={field.isFile}>
 																	<c-univ-app-file
 																		field={field}
-																		onfileselected={handleSelectFile}></c-univ-app-file>
+																		onfileselected={handleSelectFile}
+																		onfileremoved={handleRemoveFile}></c-univ-app-file>
 																</template>
 																<template lwc:else>
 																	<lightning-input-field
@@ -144,7 +145,8 @@
 																<template lwc:if={field.isFile}>
 																	<c-univ-app-file
 																		field={field}
-																		onfileselected={handleSelectFile}></c-univ-app-file>
+																		onfileselected={handleSelectFile}
+																		onfileremoved={handleRemoveFile}></c-univ-app-file>
 																</template>
 																<template lwc:else>
 																	<lightning-input-field
@@ -173,7 +175,8 @@
 															<template lwc:if={field.isFile}>
 																<c-univ-app-file
 																	field={field}
-																	onfileselected={handleSelectFile}></c-univ-app-file>
+																	onfileselected={handleSelectFile}
+																	onfileremoved={handleRemoveFile}></c-univ-app-file>
 															</template>
 															<template lwc:else>
 																<lightning-input-field

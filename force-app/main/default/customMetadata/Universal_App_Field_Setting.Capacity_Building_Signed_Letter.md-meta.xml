@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Expected_Field_Label__c</field>
-        <value xsi:type="xsd:string">Signed letter of support from the head of the institution, such as the president, chancellor, or vice-chancellor:</value>
+        <value xsi:type="xsd:string">Signed letter of support from the head of the institution, such as the president, chancellor, or vice-chancellor (.pdf,.doc,.docx,.gdoc)</value>
     </values>
     <values>
         <field>Field_Name__c</field>

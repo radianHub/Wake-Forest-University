@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Expected_Field_Label__c</field>
-        <value xsi:type="xsd:string">Curriculum vitae for the project leader(s)</value>
+        <value xsi:type="xsd:string">Curriculum vitae for the project leader(s) (.pdf,.doc,.docx,.gdoc)</value>
     </values>
     <values>
         <field>Field_Name__c</field>

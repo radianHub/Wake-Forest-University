@@ -72,7 +72,7 @@
     <decisions>
         <name>Stage</name>
         <label>Stage?</label>
-        <locationX>930</locationX>
+        <locationX>974</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
@@ -118,6 +118,9 @@
             <conditions>
                 <leftValueReference>$Record.Type</leftValueReference>
                 <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Capacity-Building</stringValue>
+                </rightValue>
             </conditions>
             <connector>
                 <targetReference>Received_Email_Capacity_Building</targetReference>
@@ -178,7 +181,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>804</locationX>
+        <locationX>848</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Stage</targetReference>

@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Expected_Field_Label__c</field>
-        <value xsi:type="xsd:string">Description of target impact and outcomes, including how those outcomes will be assessed or measured as well as expected scholarly publications or research products (500-word maximum)</value>
+        <value xsi:type="xsd:string">Description of target impact and outcomes, including how those outcomes will be assessed or measured as well as expected scholarly publications or research products (2,000 character maximum)</value>
     </values>
     <values>
         <field>Field_Name__c</field>

@@ -1,9 +1,19 @@
 <template>
-	<lightning-input
-		type="file"
-		variant="label-hidden"
-		name={field.api}
-		accept={field.acceptedFileTypes}
-		onchange={handleChangeFile}></lightning-input>
+	<main>
+		<lightning-input
+			type="file"
+			variant="label-hidden"
+			name={field.api}
+			accept={field.acceptedFileTypes}
+			onchange={handleChangeFile}></lightning-input>
+		<lightning-button-icon
+			lwc:if={hasFile}
+			icon-name="utility:close"
+			variant="container"
+			alternative-text="Remove"
+			title="Remove"
+			size="large"
+			onclick={handleClickRemove}></lightning-button-icon>
+	</main>
 	<p>Selected File: {fileName}</p>
 </template>
