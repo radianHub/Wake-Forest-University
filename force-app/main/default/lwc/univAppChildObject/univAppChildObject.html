@@ -1,13 +1,23 @@
 <template>
 	<template if:true={fieldData}>
-		<lightning-card title={title} class="slds-var-p-around_x-small">
+		<lightning-card
+			title={title}
+			class="slds-var-p-around_x-small">
 			<div>
 				<table class="slds-table slds-table_cell-buffer slds-table_bordered">
 					<thead>
 						<tr>
-							<template for:each={fieldData} for:item="field">
-								<th key={field} scope="col">
-									<div class="slds-truncate" title={field.label}>{field.label}</div>
+							<template
+								for:each={fieldData}
+								for:item="field">
+								<th
+									key={field}
+									scope="col">
+									<div
+										class="slds-truncate"
+										title={field.label}>
+										{field.label}
+									</div>
 								</th>
 							</template>
 							<!--th class="slds-size_1-of-12" scope="col">
@@ -16,9 +26,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<template for:each={records} for:item="child" for:index="index">
-							<tr key={child} class="slds-hint-parent">
-								<template for:each={fieldData} for:item="field" for:index="fieldindex">
+						<template
+							for:each={records}
+							for:item="child"
+							for:index="index">
+							<tr
+								key={child}
+								class="slds-hint-parent">
+								<template
+									for:each={fieldData}
+									for:item="field"
+									for:index="fieldindex">
 									<!-- TODO Update key value -->
 									<td key={field.api}>
 										<lightning-input
@@ -46,6 +64,6 @@
 				</table>
 			</div>
 		</lightning-card>
-		<lightning-button label={addButtonLabel} onclick={addChild} disabled={isAddChildDisabled} class="slds-var-p-horizontal_medium"></lightning-button>
+		<!-- <lightning-button label={addButtonLabel} onclick={addChild} disabled={isAddChildDisabled} class="slds-var-p-horizontal_medium"></lightning-button> -->
 	</template>
 </template>

@@ -1,6 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 
-import getChildObjectFields from '@salesforce/apex/UniversalApp.getChildObjectFields';
+// import getChildObjectFields from '@salesforce/apex/UniversalApp.getChildObjectFields';
 
 export default class UnivAppChildObject extends LightningElement {
 	@api section;
@@ -27,38 +27,37 @@ export default class UnivAppChildObject extends LightningElement {
 	};*/
 
 	connectedCallback() {
-		this.getFields();
-
+		// this.getFields();
 		//this.objectMap.set('parentField', this.parentField);
 		//this.objectMap.set('records', this.records);
 	}
 
-	getFields() {
-		getChildObjectFields({
-			ObjectName: this.objectName,
-			FieldSetName: this.fieldSet,
-		})
-			.then((result) => {
-				if (result.error) {
-					this.throwAlertEvent(result.error, 'error');
-				} else if (result.fielddata) {
-					console.log('result.fielddata');
-					console.log(result.fielddata);
-					this.fieldData = result.fielddata;
-					//console.log(this.fieldData);
+	// getFields() {
+	// 	getChildObjectFields({
+	// 		ObjectName: this.objectName,
+	// 		FieldSetName: this.fieldSet,
+	// 	})
+	// 		.then((result) => {
+	// 			if (result.error) {
+	// 				this.throwAlertEvent(result.error, 'error');
+	// 			} else if (result.fielddata) {
+	// 				console.log('result.fielddata');
+	// 				console.log(result.fielddata);
+	// 				this.fieldData = result.fielddata;
+	// 				//console.log(this.fieldData);
 
-					this.records.push(this.createNewRecord());
-				}
-			})
-			.catch((error) => {
-				this.throwAlertEvent(JSON.stringify(error), 'error');
-			});
-	}
+	// 				this.records.push(this.createNewRecord());
+	// 			}
+	// 		})
+	// 		.catch((error) => {
+	// 			this.throwAlertEvent(JSON.stringify(error), 'error');
+	// 		});
+	// }
 
-	addChild() {
-		this.records.push(this.createNewRecord());
-		console.log(this.records);
-	}
+	// addChild() {
+	// 	this.records.push(this.createNewRecord());
+	// 	console.log(this.records);
+	// }
 
 	// TODO Future Enhancement: remove rows
 	/*removeChild(event) {
@@ -69,12 +68,12 @@ export default class UnivAppChildObject extends LightningElement {
 		console.log(JSON.parse(JSON.stringify(removedRecord)));
 	}*/
 
-	createNewRecord() {
-		let newRecord = {
-			sobjectType: this.objectName,
-		};
-		return newRecord;
-	}
+	// createNewRecord() {
+	// 	let newRecord = {
+	// 		sobjectType: this.objectName,
+	// 	};
+	// 	return newRecord;
+	// }
 
 	throwAlertEvent(alert, alertType) {
 		let errorEvent = new CustomEvent('alert', {
@@ -112,9 +111,9 @@ export default class UnivAppChildObject extends LightningElement {
 		this.dispatchEvent(changeEvent);
 	}
 
-	get isAddChildDisabled() {
-		return this.records.length >= 10;
-	}
+	// get isAddChildDisabled() {
+	// 	return this.records.length >= 10;
+	// }
 
 	get fieldCount() {
 		console.log('in get fieldCount');
