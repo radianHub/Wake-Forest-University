@@ -91,10 +91,83 @@ public class UniversalApp_Test {
 		Account act = new Account(Name = 'Test Submit');
 		Map<String, Object> ret = new Map<String, Object>();
 
-		ret = UniversalApp.submitApp(act, null, null);
+		List<UniversalApp.File> files = new List<UniversalApp.File>();
+
+		UniversalApp.File file = new UniversalApp.File();
+		file.filename = 'Test file';
+		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+
+		files.add(file);
+
+		ret = UniversalApp.submitApp(act, null, JSON.serialize(files));
 
 		// Fail scenario
 		Account actNull = null;
 		UniversalApp.submitApp(actNull, null, null);
+	}
+
+	@isTest
+	static void submitSObject_Contact() {
+		// May or may not succeed -- depends on org Validation Rules / custom code
+		// No system asserts here
+		Account act = new Account(Name = 'Test Submit');
+		insert act;
+
+		Contact con = new Contact(
+			AccountId = act.Id,
+			FirstName = 'Test',
+			LastName = 'Contact',
+			Email = 'testcontact@wfu.com.test'
+		);
+
+		Map<String, Object> ret = new Map<String, Object>();
+
+		List<UniversalApp.File> files = new List<UniversalApp.File>();
+
+		UniversalApp.File file = new UniversalApp.File();
+		file.filename = 'Test file';
+		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+
+		files.add(file);
+
+		ret = UniversalApp.submitApp(con, 'Registration', JSON.serialize(files));
+
+		// Fail scenario
+		Contact conNull = null;
+		UniversalApp.submitApp(conNull, null, null);
+	}
+
+	@isTest
+	static void submitSObject_Opportunity() {
+		// May or may not succeed -- depends on org Validation Rules / custom code
+		// No system asserts here
+		Account act = new Account(Name = 'Test Submit');
+		insert act;
+
+		Contact con = new Contact(
+			AccountId = act.Id,
+			FirstName = 'Test',
+			LastName = 'Contact',
+			Email = 'testcontact@wfu.com.test'
+		);
+		insert con;
+
+		Opportunity opp = new Opportunity(AccountId = act.Id);
+
+		Map<String, Object> ret = new Map<String, Object>();
+
+		List<UniversalApp.File> files = new List<UniversalApp.File>();
+
+		UniversalApp.File file = new UniversalApp.File();
+		file.filename = 'Test file';
+		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+
+		files.add(file);
+
+		ret = UniversalApp.submitApp(opp, 'Grant_Application', JSON.serialize(files));
+
+		// Fail scenario
+		Opportunity oppNull = null;
+		UniversalApp.submitApp(oppNull, null, null);
 	}
 }

@@ -96,9 +96,7 @@ public without sharing class UniversalApp {
 	public static sObject queryForBoolean(String fieldName, String objName, String recordId) {
 		List<SObject> obj = null;
 		String qry = 'SELECT ' + fieldName + ' FROM ' + objName + ' WHERE Id = ' + '\'' + recordId + '\'';
-		system.debug(qry);
 		obj = Database.query(qry);
-		system.debug('Queried Records ' + obj.size());
 
 		if (obj.size() == 1) {
 			return obj[0];
@@ -195,7 +193,6 @@ public without sharing class UniversalApp {
 
 						if (recordId != null) {
 							fieldValues = queryRecord(recordId, application.Object__c);
-							system.debug(fieldValues);
 						}
 
 						for (String fieldSet : mapfieldset.keySet()) {
@@ -204,9 +201,6 @@ public without sharing class UniversalApp {
 								List<Schema.FieldSetMember> fields = objFieldSet.getFields();
 								List<Object> fieldMembers = new List<Object>();
 								for (Schema.FieldSetMember member : fields) {
-									System.debug('member ' + member);
-									System.debug('member ' + member.getLabel());
-
 									String altLabel;
 									Boolean hasAltLabel = false;
 									Boolean isFile = false;
@@ -427,81 +421,81 @@ public without sharing class UniversalApp {
 		];
 	}
 
-	@AuraEnabled
-	public static void submitChildObjects(List<childRecordsWrapper> childObjs, Id parentId) {
-		try {
-			List<SObject> records = new List<SObject>();
-			for (childRecordsWrapper wrapper : childObjs) {
-				for (SObject record : wrapper.records) {
-					record.put(wrapper.parentField, parentId);
-				}
-				records.addAll(wrapper.records);
-			}
-			insert records;
-		} catch (Exception e) {
-			throw new AuraHandledException(e.getMessage());
-		}
-	}
+	// @AuraEnabled
+	// public static void submitChildObjects(List<childRecordsWrapper> childObjs, Id parentId) {
+	// 	try {
+	// 		List<SObject> records = new List<SObject>();
+	// 		for (childRecordsWrapper wrapper : childObjs) {
+	// 			for (SObject record : wrapper.records) {
+	// 				record.put(wrapper.parentField, parentId);
+	// 			}
+	// 			records.addAll(wrapper.records);
+	// 		}
+	// 		insert records;
+	// 	} catch (Exception e) {
+	// 		throw new AuraHandledException(e.getMessage());
+	// 	}
+	// }
 
-	@AuraEnabled
-	public static Map<String, Object> getChildObjectFields(String ObjectName, String FieldSetName) {
-		Map<String, Object> ret = new Map<String, Object>();
+	// @AuraEnabled
+	// public static Map<String, Object> getChildObjectFields(String ObjectName, String FieldSetName) {
+	// 	Map<String, Object> ret = new Map<String, Object>();
 
-		Map<String, List<Object>> fieldsetmap = new Map<String, List<Object>>();
+	// 	Map<String, List<Object>> fieldsetmap = new Map<String, List<Object>>();
 
-		Schema.FieldSet objFieldSet = ((SObject) Type.forName('Schema', ObjectName)?.newInstance())
-			?.getSObjectType()
-			?.getDescribe()
-			?.fieldSets
-			?.getMap()
-			?.get(FieldSetName);
+	// 	Schema.FieldSet objFieldSet = ((SObject) Type.forName('Schema', ObjectName)?.newInstance())
+	// 		?.getSObjectType()
+	// 		?.getDescribe()
+	// 		?.fieldSets
+	// 		?.getMap()
+	// 		?.get(FieldSetName);
 
-		if (objFieldSet == null) {
-			ret.put('error', String.format(NULL_FIELDSET, new List<Object>{ FieldSetName, ObjectName }));
-		} else {
-			Map<String, Set<String>> mapfieldset = new Map<String, Set<String>>();
-			Map<String, Map<String, String>> mapFieldSetting = new Map<String, Map<String, String>>();
+	// 	if (objFieldSet == null) {
+	// 		ret.put('error', String.format(NULL_FIELDSET, new List<Object>{ FieldSetName, ObjectName }));
+	// 	} else {
+	// 		Map<String, Set<String>> mapfieldset = new Map<String, Set<String>>();
+	// 		Map<String, Map<String, String>> mapFieldSetting = new Map<String, Map<String, String>>();
 
-			Set<String> nullFieldSets = new Set<String>();
-			sObject fieldValues = null;
+	// 		Set<String> nullFieldSets = new Set<String>();
+	// 		sObject fieldValues = null;
 
-			List<Schema.FieldSetMember> fields = objFieldSet.getFields();
-			List<Object> fieldMembers = new List<Object>();
-			for (Schema.FieldSetMember member : fields) {
-				String altLabel;
-				Boolean hasAltLabel = false;
+	// 		List<Schema.FieldSetMember> fields = objFieldSet.getFields();
+	// 		List<Object> fieldMembers = new List<Object>();
+	// 		for (Schema.FieldSetMember member : fields) {
+	// 			String altLabel;
+	// 			Boolean hasAltLabel = false;
 
-				if (mapFieldSetting?.containsKey(FieldSetName)) {
-					if (mapFieldSetting.get(FieldSetName)?.containsKey(member.getFieldPath())) {
-						hasAltLabel = true;
-						altLabel = mapFieldSetting.get(FieldSetName).get(member.getFieldPath());
-					}
-				}
+	// 			if (mapFieldSetting?.containsKey(FieldSetName)) {
+	// 				if (mapFieldSetting.get(FieldSetName)?.containsKey(member.getFieldPath())) {
+	// 					hasAltLabel = true;
+	// 					altLabel = mapFieldSetting.get(FieldSetName).get(member.getFieldPath());
+	// 				}
+	// 			}
 
-				Map<String, Object> fieldMember = new Map<String, Object>{
-					'api' => member.getFieldPath(),
-					'req' => (member.getDBRequired() || member.getRequired()),
-					'label' => member.getLabel(),
-					'type' => member.getType().name(),
-					'hasAltLabel' => hasAltLabel,
-					'altLabel' => altLabel
-				};
+	// 			Map<String, Object> fieldMember = new Map<String, Object>{
+	// 				'api' => member.getFieldPath(),
+	// 				'req' => (member.getDBRequired() || member.getRequired()),
+	// 				'label' => member.getLabel(),
+	// 				'type' => member.getType().name(),
+	// 				'hasAltLabel' => hasAltLabel,
+	// 				'altLabel' => altLabel
+	// 			};
 
-				fieldMembers.add(fieldMember);
-			}
+	// 			fieldMembers.add(fieldMember);
+	// 		}
 
-			ret.put('fielddata', fieldMembers);
-		}
+	// 		ret.put('fielddata', fieldMembers);
+	// 	}
 
-		return ret;
-	}
+	// 	return ret;
+	// }
 
-	public class childRecordsWrapper {
-		@AuraEnabled
-		public String objectName { get; set; }
-		@AuraEnabled
-		public String parentField { get; set; }
-		@AuraEnabled
-		public List<SObject> records { get; set; }
-	}
+	// public class childRecordsWrapper {
+	// 	@AuraEnabled
+	// 	public String objectName { get; set; }
+	// 	@AuraEnabled
+	// 	public String parentField { get; set; }
+	// 	@AuraEnabled
+	// 	public List<SObject> records { get; set; }
+	// }
 }
