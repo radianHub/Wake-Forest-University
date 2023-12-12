@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Teacher_Scholar_Max_Amount</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Type, &apos;Teacher-Scholar&apos;),
+    Amount &gt; 15000
+)</errorConditionFormula>
+    <errorMessage>Maximum amount requested is $15,000 for an Teacher-Scholar grant</errorMessage>
+</ValidationRule>

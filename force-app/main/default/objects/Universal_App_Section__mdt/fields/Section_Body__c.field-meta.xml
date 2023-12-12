@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Section_Body__c</fullName>
+    <description>See LWC Developer Guide for supported HTML tags, under lightning-formatted-rich-text. Auto-links URLs and emails.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Text displayed under the header (formatted rich text), supporting the following HTML tags: a, b, br, code, div, em, h1, img, li, table, ul, etc.</inlineHelpText>
+    <label>Section Body</label>
+    <length>3000</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

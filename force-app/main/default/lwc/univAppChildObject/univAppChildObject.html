@@ -1,0 +1,69 @@
+<template>
+	<template if:true={fieldData}>
+		<lightning-card
+			title={title}
+			class="slds-var-p-around_x-small">
+			<div>
+				<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+					<thead>
+						<tr>
+							<template
+								for:each={fieldData}
+								for:item="field">
+								<th
+									key={field}
+									scope="col">
+									<div
+										class="slds-truncate"
+										title={field.label}>
+										{field.label}
+									</div>
+								</th>
+							</template>
+							<!--th class="slds-size_1-of-12" scope="col">
+                                <div class="slds-truncate" title="Remove">Remove</div>
+                            </th-->
+						</tr>
+					</thead>
+					<tbody>
+						<template
+							for:each={records}
+							for:item="child"
+							for:index="index">
+							<tr
+								key={child}
+								class="slds-hint-parent">
+								<template
+									for:each={fieldData}
+									for:item="field"
+									for:index="fieldindex">
+									<!-- TODO Update key value -->
+									<td key={field.api}>
+										<lightning-input
+											type={field.type}
+											field-name={field.api}
+											required={field.req}
+											variant="label-stacked"
+											value={field.value}
+											onchange={onChangeHandler}
+											data-fieldindex={fieldindex}
+											data-index={index}
+											data-fieldapi={field.api}
+											disabled={finished}></lightning-input>
+									</td>
+								</template>
+								<!--td class="slds-size_1-of-12">
+                                    <a onclick={remove}>
+                                        <lightning-icon icon-name="utility:delete" alternative-text="delete" size="small"
+                                            onclick={removeChild} data-index={index}></lightning-icon>
+                                    </a>
+                                </td-->
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</lightning-card>
+		<!-- <lightning-button label={addButtonLabel} onclick={addChild} disabled={isAddChildDisabled} class="slds-var-p-horizontal_medium"></lightning-button> -->
+	</template>
+</template>

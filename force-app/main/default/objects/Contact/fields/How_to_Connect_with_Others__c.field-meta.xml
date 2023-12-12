@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_to_Connect_with_Others__c</fullName>
+    <externalId>false</externalId>
+    <label>How to Connect with Others</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Conferences (In Person) and Consider Presenting</fullName>
+                <default>false</default>
+                <label>Conferences (In Person) and Consider Presenting</label>
+            </value>
+            <value>
+                <fullName>Conferences (In Person) and Consider Attending</fullName>
+                <default>false</default>
+                <label>Conferences (In Person) and Consider Attending</label>
+            </value>
+            <value>
+                <fullName>Conferences (Virtual) and Consider Presenting</fullName>
+                <default>false</default>
+                <label>Conferences (Virtual) and Consider Presenting</label>
+            </value>
+            <value>
+                <fullName>Conferences (Virtual) and Consider Attending</fullName>
+                <default>false</default>
+                <label>Conferences (Virtual) and Consider Attending</label>
+            </value>
+            <value>
+                <fullName>Workshops (In Person) and Consider Participating</fullName>
+                <default>false</default>
+                <label>Workshops (In Person) and Consider Participating</label>
+            </value>
+            <value>
+                <fullName>Workshops (Virtual) and Consider Participating</fullName>
+                <default>false</default>
+                <label>Workshops (Virtual) and Consider Participating</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

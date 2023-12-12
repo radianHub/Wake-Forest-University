@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Section_Field_Set__c</fullName>
+    <description>API developer name of the Universal App Object&apos;s field set.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Field set API name can be found in the &quot;Field Sets&quot; section of the specified Object in &quot;Object Manager&quot; under &quot;Setup&quot;.</inlineHelpText>
+    <label>Section Field Set</label>
+    <length>80</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

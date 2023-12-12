@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Area_of_Interest_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    INCLUDES(Area_of_Interest__c, &apos;Other&apos;),
+    ISBLANK(Other_Area_of_Interest__c)
+)</errorConditionFormula>
+    <errorMessage>Other Area of Interested must be provided if Other is selected</errorMessage>
+</ValidationRule>

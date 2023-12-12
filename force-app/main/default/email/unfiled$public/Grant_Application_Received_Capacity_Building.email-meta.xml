@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Grant Application Received - Capacity Building</name>
+    <style>none</style>
+    <subject>Grant Application Received</subject>
+    <textOnly>Thank you for applying for a Capacity Building grant!
+
+Through a generous grant from Lilly Endowment Inc., the Educating Character Initiative aims to foster a robust network that recognizes the value of educating character within higher education and provides both individuals and institutions with the resources and support needed to integrate character education into their distinctive contexts.
+
+Decisions about Capacity Building grants will be communicated on or before May 1, 2024. If you have any questions prior to that date, please reach out to the Education Character Initiative team by email at ECI@wfu.edu. We are delighted that you are contributing to the ECI community through this proposal.
+
+Thank you for being part of this network.
+
+
+With gratitude,
+
+Dr. Beth Purvis
+Director, Educating Character Initiative
+Program for Leadership &amp; Character
+
+Wake Forest University
+PO Box 7392 | Winston-Salem, NC 27109
+Starling Hall
+purvise@wfu.edu
+leadershipandcharacter.wfu.edu</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

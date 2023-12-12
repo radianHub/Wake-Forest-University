@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conditionalRequire__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>JSON object example, keys are required:
+{ &quot;Fields&quot;: [
+    {
+     &quot;api&quot;: &quot;Field To Require API Value&quot;,
+     &quot;controllingField&quot;: &quot;Controlling Field API Value&quot;,
+     &quot;controllingValues&quot;: [ &quot;List of controlling values&quot; ]
+    },
+    {
+    Repeat the above for more values ie:
+    &quot;api&quot;: &quot;RequredAPI&quot;,
+    &quot;controllingField&quot;: &quot;RequiredController&quot;,
+    &quot;controllingValues&quot;: [&quot;Value1&quot;, &quot;Value2&quot;, &quot;etc...&quot;]
+    } ]
+}</inlineHelpText>
+    <label>Conditional Require</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>15</visibleLines>
+</CustomField>

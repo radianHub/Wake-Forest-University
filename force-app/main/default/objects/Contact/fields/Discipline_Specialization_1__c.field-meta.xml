@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discipline_Specialization_1__c</fullName>
+    <externalId>false</externalId>
+    <label>Discipline Specialization 1</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Research_Specialization</valueSetName>
+    </valueSet>
+</CustomField>

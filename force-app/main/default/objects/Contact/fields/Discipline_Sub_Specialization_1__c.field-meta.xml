@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discipline_Sub_Specialization_1__c</fullName>
+    <externalId>false</externalId>
+    <label>Discipline Sub-Specialization 1</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Discipline_Specialization_1__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Research_Sub_Specialization</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Education</controllingFieldValue>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Education</controllingFieldValue>
+            <valueName>PK-12</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Education</controllingFieldValue>
+            <valueName>Post-Secondary</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Anthropology/Archaeology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Communications</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Economics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Geography</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Linguistics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Military Science</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Political Science</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Psychology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Sciences</controllingFieldValue>
+            <valueName>Sociology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Art</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Classics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Dance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>History</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Languages</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Literature, Writing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Music</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Philosophy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Art &amp; Humanities</controllingFieldValue>
+            <valueName>Religion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Biology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Chemistry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Computer Sciences</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Environmental Sciences</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Information Technology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Mathematics/Statistics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sciences, Technology, Engineering, and Math</controllingFieldValue>
+            <valueName>Physics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Business and Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Divinity Religion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Health and Medical Professions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Journalism</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Law</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Schools</controllingFieldValue>
+            <valueName>Public Policy</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

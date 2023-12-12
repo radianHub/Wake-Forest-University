@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Public</fullName>
+        <default>false</default>
+        <label>Public</label>
+    </customValue>
+    <customValue>
+        <fullName>Private</fullName>
+        <default>false</default>
+        <label>Private</label>
+    </customValue>
+    <customValue>
+        <fullName>Historically Black College Uni (HBCU)</fullName>
+        <default>false</default>
+        <label>Historically Black College Uni (HBCU)</label>
+    </customValue>
+    <customValue>
+        <fullName>Hispanic Serving Organization (HSI)</fullName>
+        <default>false</default>
+        <label>Hispanic Serving Organization (HSI)</label>
+    </customValue>
+    <customValue>
+        <fullName>Single-gender Serving</fullName>
+        <default>false</default>
+        <label>Single-gender Serving</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-profit</fullName>
+        <default>false</default>
+        <label>Non-profit</label>
+    </customValue>
+    <customValue>
+        <fullName>For-profit</fullName>
+        <default>false</default>
+        <label>For-profit</label>
+    </customValue>
+    <masterLabel>Institution Subtype</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
