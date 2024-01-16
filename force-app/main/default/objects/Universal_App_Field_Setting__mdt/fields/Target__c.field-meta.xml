@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Type__c</fullName>
+    <fullName>Target__c</fullName>
     <externalId>false</externalId>
-    <fieldManageability>DeveloperControlled</fieldManageability>
-    <label>Type</label>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Target</label>
     <required>false</required>
     <type>Picklist</type>
     <valueSet>
@@ -11,19 +11,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Text</fullName>
+                <fullName>_blank</fullName>
                 <default>true</default>
-                <label>Text</label>
+                <label>_blank</label>
             </value>
             <value>
-                <fullName>File</fullName>
+                <fullName>_self</fullName>
                 <default>false</default>
-                <label>File</label>
+                <label>_self</label>
             </value>
             <value>
-                <fullName>Link</fullName>
+                <fullName>_parent</fullName>
                 <default>false</default>
-                <label>Link</label>
+                <label>_parent</label>
+            </value>
+            <value>
+                <fullName>_top</fullName>
+                <default>false</default>
+                <label>_top</label>
             </value>
         </valueSetDefinition>
     </valueSet>

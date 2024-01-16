@@ -58,6 +58,11 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
+        <field>Budget_Template__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>Signed_Letter_of_Support__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
