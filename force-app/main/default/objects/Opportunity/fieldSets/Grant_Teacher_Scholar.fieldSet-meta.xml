@@ -77,5 +77,10 @@
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
+    <displayedFields>
+        <field>Budget_Template__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
     <label>Grant Teacher Scholar</label>
 </FieldSet>

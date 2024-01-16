@@ -513,6 +513,20 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 		}
 	}
 
+	// *
+	handleClickLink(e) {
+		console.log('click link');
+		const config = {
+			type: 'standard__webPage',
+			attributes: {
+				// url: 'https://www.google.com',
+				url: e.currentTarget.dataset.url,
+			},
+		};
+		console.log('config', config);
+		this[NavigationMixin.Navigate](config);
+	}
+
 	// # GETTERS/SETTERS
 
 	// * DETERMINES WETHER OR NOT TO SHOW RESTART IF APPLICABLE

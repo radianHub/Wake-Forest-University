@@ -205,6 +205,9 @@ public without sharing class UniversalApp {
 									Boolean hasAltLabel = false;
 									Boolean isFile = false;
 									String acceptedFileTypes = '';
+									Boolean isLink = false;
+									String linkURL = '';
+									String linkTarget = '_blank';
 
 									if (mapFieldSetting?.containsKey(fieldSet)) {
 										if (mapFieldSetting.get(fieldSet)?.containsKey(member.getFieldPath())) {
@@ -216,7 +219,10 @@ public without sharing class UniversalApp {
 											hasAltLabel = true;
 											altLabel = fieldSetting.Expected_Field_Label__c;
 											isFile = fieldSetting.Type__c == 'File' ? true : false;
+											isLink = fieldSetting.Type__c == 'Link' ? true : false;
 											acceptedFileTypes = fieldsetting.Accepted_File_Types__c;
+											linkURL = fieldSetting.URL__c;
+											linkTarget = fieldSetting.Target__c;
 										}
 									}
 
@@ -229,7 +235,10 @@ public without sharing class UniversalApp {
 										'altLabel' => altLabel,
 										'isBool' => member.getType().name() == 'BOOLEAN' ? true : false,
 										'isFile' => isFile,
-										'acceptedFileTypes' => acceptedFileTypes
+										'acceptedFileTypes' => acceptedFileTypes,
+										'isLink' => isLink,
+										'linkURL' => linkURL,
+										'linkTarget' => linkTarget
 									};
 
 									if (recordId != null) {
@@ -416,7 +425,9 @@ public without sharing class UniversalApp {
 				Field_Name__c,
 				Universal_App_Section__c,
 				Type__c,
-				Accepted_File_Types__c
+				Accepted_File_Types__c,
+				URL__c,
+				Target__c
 			FROM Universal_App_Field_Setting__mdt
 		];
 	}
