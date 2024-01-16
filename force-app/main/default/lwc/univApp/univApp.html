@@ -96,16 +96,21 @@
 														<template if:true={hasValue}>
 															<div class="altLabelContainer">
 																<div class="altLabel">
-																	<div if:false={field.isBool}>
-																		<div
-																			if:true={field.req}
-																			class="req">
-																			*
+																	<template lwc:if={field.isLink}
+																		><div style="height: 24px"></div
+																	></template>
+																	<template lwc:else>
+																		<div if:false={field.isBool}>
+																			<div
+																				if:true={field.req}
+																				class="req">
+																				*
+																			</div>
 																		</div>
-																	</div>
-																	<label class="slds-form-element__label">
-																		{field.altLabel}
-																	</label>
+																		<label class="slds-form-element__label">
+																			{field.altLabel}
+																		</label>
+																	</template>
 																</div>
 
 																<template lwc:if={field.isFile}>
@@ -113,6 +118,12 @@
 																		field={field}
 																		onfileselected={handleSelectFile}
 																		onfileremoved={handleRemoveFile}></c-univ-app-file>
+																</template>
+																<template lwc:elseif={field.isLink}>
+																	<lightning-button
+																		label={field.altLabel}
+																		onclick={handleClickLink}
+																		data-url={field.linkURL}></lightning-button>
 																</template>
 																<template lwc:else>
 																	<lightning-input-field
@@ -131,22 +142,33 @@
 																<div
 																	class="altLabel"
 																	id={field.api}>
-																	<div if:false={field.isBool}>
-																		<div
-																			if:true={field.req}
-																			class="req slds-required">
-																			*
+																	<template lwc:if={field.isLink}>
+																		<div style="height: 24px"></div>
+																	</template>
+																	<template lwc:else>
+																		<div if:false={field.isBool}>
+																			<div
+																				if:true={field.req}
+																				class="req slds-required">
+																				*
+																			</div>
 																		</div>
-																	</div>
-																	<label class="slds-form-element__label">
-																		{field.altLabel}
-																	</label>
+																		<label class="slds-form-element__label">
+																			{field.altLabel}
+																		</label>
+																	</template>
 																</div>
 																<template lwc:if={field.isFile}>
 																	<c-univ-app-file
 																		field={field}
 																		onfileselected={handleSelectFile}
 																		onfileremoved={handleRemoveFile}></c-univ-app-file>
+																</template>
+																<template lwc:elseif={field.isLink}>
+																	<lightning-button
+																		label={field.altLabel}
+																		onclick={handleClickLink}
+																		data-url={field.linkURL}></lightning-button>
 																</template>
 																<template lwc:else>
 																	<lightning-input-field
