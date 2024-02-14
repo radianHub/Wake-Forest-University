@@ -4,7 +4,7 @@
         <name>Received_Email_Capacity_Building</name>
         <label>Received Email - Capacity Building</label>
         <locationX>314</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <actionName>Opportunity.Grant_Application_Received_Capacity_Building</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -21,7 +21,7 @@
         <name>Received_Email_Institutional_Impact</name>
         <label>Received Email - Institutional Impact</label>
         <locationX>578</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <actionName>Opportunity.Grant_Application_Received_Institutional_Impact</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -38,7 +38,7 @@
         <name>Received_Email_Professional_Development</name>
         <label>Received Email - Professional Development</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <actionName>Opportunity.Grant_Application_Received_Professional_Development</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -55,7 +55,7 @@
         <name>Received_Email_Teacher_Scholar</name>
         <label>Received Email - Teacher Scholar</label>
         <locationX>842</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <actionName>Opportunity.Grant_Application_Received_Teacher_Scholar</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -70,9 +70,31 @@
     </actionCalls>
     <apiVersion>59.0</apiVersion>
     <decisions>
+        <name>Has_Community_Member</name>
+        <label>Has Community Member?</label>
+        <locationX>974</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Community_Member__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Type</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Stage</name>
         <label>Stage?</label>
-        <locationX>974</locationX>
+        <locationX>1304</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
@@ -86,7 +108,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Type</targetReference>
+                <targetReference>Has_Community_Member</targetReference>
             </connector>
             <label>Application Received</label>
         </rules>
@@ -95,7 +117,7 @@
         <name>Type</name>
         <label>Type?</label>
         <locationX>578</locationX>
-        <locationY>431</locationY>
+        <locationY>539</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>Professional_Development</name>
@@ -181,7 +203,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>848</locationX>
+        <locationX>1178</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Stage</targetReference>

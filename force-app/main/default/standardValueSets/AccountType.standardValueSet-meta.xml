@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customValue>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
         <fullName>Public College/University</fullName>
         <default>false</default>
         <label>Public College/University</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>Private College/University</fullName>
         <default>false</default>
         <label>Private College/University</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>Community/Technical College</fullName>
         <default>false</default>
         <label>Community/Technical College</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>HBCU</fullName>
         <default>false</default>
         <label>HBCU</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>HSI</fullName>
         <default>false</default>
         <label>HSI</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>Single Gender</fullName>
         <default>false</default>
         <label>Single Gender</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>Nonprofit Organization</fullName>
         <default>false</default>
         <label>Nonprofit Organization</label>
-    </customValue>
-    <customValue>
+    </standardValue>
+    <standardValue>
         <fullName>Other</fullName>
         <default>false</default>
         <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical School</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Technical School</label>
-    </customValue>
-    <masterLabel>Institution Type</masterLabel>
-    <sorted>false</sorted>
-</GlobalValueSet>
+    </standardValue>
+</StandardValueSet>
