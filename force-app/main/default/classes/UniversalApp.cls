@@ -241,6 +241,8 @@ public without sharing class UniversalApp {
 										'linkTarget' => linkTarget
 									};
 
+									System.debug('fieldMember ' + fieldMember);
+
 									if (recordId != null) {
 										fieldMember.put('value', fieldValues.get(member.getFieldPath()));
 									}
@@ -292,7 +294,7 @@ public without sharing class UniversalApp {
 					];
 
 					if (existingCommunityMember.size() > 0) {
-						throw new CustomException('A a community member already exists under this email address');
+						throw new CustomException('A community member already exists under this email address');
 					}
 
 					Database.UpsertResult result = Database.upsert(newCommunityMember, false);
@@ -313,13 +315,20 @@ public without sharing class UniversalApp {
 					];
 
 					if (existingCommunityMember.size() == 0) {
-						throw new CustomException('No community member has been registered with this email address');
+						newGrantApplication.AccountId = [
+							SELECT Id
+							FROM Account
+							WHERE Community_Registration_Default__c = TRUE
+							LIMIT 1
+						][0]
+						.Id;
+					} else {
+						newGrantApplication.AccountId = existingCommunityMember[0].AccountId;
+						newGrantApplication.Community_Member__c = existingCommunityMember[0].Id;
 					}
 
-					newGrantApplication.AccountId = existingCommunityMember[0].AccountId;
 					newGrantApplication.StageName = 'Application Received';
 					newGrantApplication.CloseDate = Date.today();
-					newGrantApplication.Community_Member__c = existingCommunityMember[0].Id;
 
 					Database.UpsertResult result = Database.upsert(newGrantApplication, false);
 					if (!result.isSuccess()) {
