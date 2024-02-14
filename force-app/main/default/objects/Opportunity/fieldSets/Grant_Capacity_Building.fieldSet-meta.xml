@@ -3,21 +3,6 @@
     <fullName>Grant_Capacity_Building</fullName>
     <description>Grant application form for universal app</description>
     <displayedFields>
-        <field>Administrative_Assistant_First_Name__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>Administrative_Assistant_Last_Name__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>Administrative_Assistant_Email__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
         <field>Contact_for_Approval_First_Name__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
