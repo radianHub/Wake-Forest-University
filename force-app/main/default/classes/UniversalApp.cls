@@ -294,7 +294,9 @@ public without sharing class UniversalApp {
 					];
 
 					if (existingCommunityMember.size() > 0) {
-						throw new CustomException('A community member already exists under this email address');
+						throw new CustomException(
+							'A community member already exists under this email address. Please contact the Grants and Contracts Manager at ECI@wfu.edu to make changes to your file or with any questions.'
+						);
 					}
 
 					Database.UpsertResult result = Database.upsert(newCommunityMember, false);
