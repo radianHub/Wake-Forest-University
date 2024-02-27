@@ -241,8 +241,6 @@ public without sharing class UniversalApp {
 										'linkTarget' => linkTarget
 									};
 
-									System.debug('fieldMember ' + fieldMember);
-
 									if (recordId != null) {
 										fieldMember.put('value', fieldValues.get(member.getFieldPath()));
 									}
