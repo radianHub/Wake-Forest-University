@@ -88,7 +88,6 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 					this.alert = result.error;
 					this.alertType = 'error';
 				} else if (result.data) {
-					console.log('data', result.data);
 					this.originalData = result.data;
 					let cloneData = JSON.parse(JSON.stringify(result.data));
 					cloneData.sections.forEach((e) => {
@@ -130,14 +129,17 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 
 		let urlRecordId;
 
+		let filesToInsert = [];
+
 		for (const fieldApiName of Object.keys(this.files)) {
 			this.sObj[fieldApiName] = true;
+			filesToInsert.push(...this.files[fieldApiName]);
 		}
 
 		submitSObj({
 			sObj: this.sObj,
 			application: this.appDevName,
-			filesString: JSON.stringify(Object.values(this.files)),
+			filesString: JSON.stringify(filesToInsert),
 		})
 			.then((result) => {
 				if (result.data) {
@@ -191,8 +193,6 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 	}
 
 	lwcPageRedirect() {
-		console.log('redirecting');
-		console.log(this.appData.Page_Redirect__c);
 		this[NavigationMixin.Navigate]({
 			type: 'comm__namedPage',
 			attributes: {
@@ -426,31 +426,33 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 	handleSelectFile(event) {
 		const apiName = event.detail.fieldApiName;
 		const fieldLabel = event.detail.fieldLabel;
-		const file = event.detail.file;
+		const files = event.detail.files;
 
-		let reader = new FileReader();
-		let base64;
-		let filename = fieldLabel + ' - ' + file.name;
+		let fieldFiles = this.files[apiName];
 
-		reader.onload = () => {
-			base64 = reader.result.split(',')[1];
-			let obj = { ...this.files };
-			obj[apiName] = { filename: filename, base64: base64 };
-			this.files = obj;
-		};
-		reader.readAsDataURL(file);
+		if (fieldFiles === undefined) {
+			this.files[apiName] = [];
+		}
+
+		for (const file of files) {
+			let reader = new FileReader();
+			let base64;
+			let filename = fieldLabel + ' - ' + file.name;
+
+			reader.onload = () => {
+				base64 = reader.result.split(',')[1];
+				let obj = { ...this.files };
+
+				obj[apiName].push({ filename: filename, base64: base64 });
+				this.files = obj;
+			};
+			reader.readAsDataURL(file);
+		}
 	}
 
 	handleRemoveFile(event) {
-		console.log('onfileremoved event');
 		const apiName = event.detail.fieldApiName;
-		console.log('apiName', apiName);
-
-		console.log('files', Object.keys(this.files));
-		// console.log('file', this.files[apiName]);
 		delete this.files[apiName];
-
-		console.log('files', Object.keys(this.files));
 	}
 
 	// * HANDLES THE DYNAMIC RENDERING AND REQUIRE OF FIELDS
@@ -515,15 +517,12 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 
 	// *
 	handleClickLink(e) {
-		console.log('click link');
 		const config = {
 			type: 'standard__webPage',
 			attributes: {
-				// url: 'https://www.google.com',
 				url: e.currentTarget.dataset.url,
 			},
 		};
-		console.log('config', config);
 		this[NavigationMixin.Navigate](config);
 	}
 

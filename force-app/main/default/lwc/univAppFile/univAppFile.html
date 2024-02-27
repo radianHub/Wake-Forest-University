@@ -5,9 +5,10 @@
 			variant="label-hidden"
 			name={field.api}
 			accept={field.acceptedFileTypes}
-			onchange={handleChangeFile}></lightning-input>
+			onchange={handleChangeFile}
+			multiple></lightning-input>
 		<lightning-button-icon
-			lwc:if={hasFile}
+			lwc:if={hasFiles}
 			icon-name="utility:close"
 			variant="container"
 			alternative-text="Remove"
@@ -15,5 +16,9 @@
 			size="large"
 			onclick={handleClickRemove}></lightning-button-icon>
 	</main>
-	<p>Selected File: {fileName}</p>
+	<template
+		for:each={files}
+		for:item="file">
+		<p key={file.lastModified}>Selected File: {file.name}</p>
+	</template>
 </template>
