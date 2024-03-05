@@ -56,30 +56,12 @@
         <won>false</won>
     </standardValue>
     <standardValue>
-        <fullName>Funding Approved</fullName>
-        <default>false</default>
-        <label>Funding Approved</label>
-        <closed>false</closed>
-        <forecastCategory>Pipeline</forecastCategory>
-        <probability>70</probability>
-        <won>false</won>
-    </standardValue>
-    <standardValue>
         <fullName>Progress Report Received</fullName>
         <default>false</default>
         <label>Progress Report Received</label>
         <closed>false</closed>
         <forecastCategory>Pipeline</forecastCategory>
         <probability>80</probability>
-        <won>false</won>
-    </standardValue>
-    <standardValue>
-        <fullName>Progress Report Reviewed</fullName>
-        <default>false</default>
-        <label>Progress Report Reviewed</label>
-        <closed>false</closed>
-        <forecastCategory>Pipeline</forecastCategory>
-        <probability>90</probability>
         <won>false</won>
     </standardValue>
     <standardValue>
@@ -99,5 +81,59 @@
         <forecastCategory>Omitted</forecastCategory>
         <probability>0</probability>
         <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Received</fullName>
+        <default>false</default>
+        <label>Received</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>20</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent to Reviewer</fullName>
+        <default>false</default>
+        <label>Sent to Reviewer</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>50</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Approved</fullName>
+        <default>false</default>
+        <label>Approved</label>
+        <closed>false</closed>
+        <forecastCategory>Forecast</forecastCategory>
+        <probability>100</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Rejected</fullName>
+        <default>false</default>
+        <label>Rejected</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Contract Executed</fullName>
+        <default>false</default>
+        <label>Contract Executed</label>
+        <closed>false</closed>
+        <forecastCategory>Forecast</forecastCategory>
+        <probability>99</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
     </standardValue>
 </StandardValueSet>
