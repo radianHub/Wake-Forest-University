@@ -7,22 +7,6 @@
         <default>false</default>
     </values>
     <values>
-        <fullName>Application Approved</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Application Received</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Application Rejected</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Application Sent to Reviewer</fullName>
-        <default>false</default>
-    </values>
-    <values>
         <fullName>Approved</fullName>
         <default>false</default>
     </values>
@@ -36,10 +20,6 @@
     </values>
     <values>
         <fullName>Contract Executed</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Grant Closeout</fullName>
         <default>false</default>
     </values>
     <values>
