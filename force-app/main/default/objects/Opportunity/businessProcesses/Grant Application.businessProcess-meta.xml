@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grant Application</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Advanced to Round II</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Application Approved</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Application Received</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Application Rejected</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Application Sent to Reviewer</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Approved</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Contract Awarded</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Contract Executed</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Grant Closeout</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Other</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Progress Report Received</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Received</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Rejected</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Sent to Reviewer</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

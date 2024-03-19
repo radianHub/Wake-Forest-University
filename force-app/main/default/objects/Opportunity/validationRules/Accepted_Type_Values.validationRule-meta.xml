@@ -3,6 +3,7 @@
     <fullName>Accepted_Type_Values</fullName>
     <active>true</active>
     <errorConditionFormula>AND(
+    RecordTypeId = &apos;012D40000013fvXIAQ&apos;,
     NOT(ISPICKVAL(Type, &apos;Capacity-Building&apos;)),
     NOT(ISPICKVAL(Type, &apos;Institutional Impact&apos;)),
     NOT(ISPICKVAL(Type, &apos;Professional Development CLOSED&apos;)),

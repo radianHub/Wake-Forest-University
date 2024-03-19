@@ -329,6 +329,46 @@ public without sharing class UniversalApp {
 
 					newGrantApplication.StageName = 'Application Received';
 					newGrantApplication.CloseDate = Date.today();
+					newGrantApplication.RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName()
+						.get('Grant_Application')
+						.getRecordTypeId();
+
+					Database.UpsertResult result = Database.upsert(newGrantApplication, false);
+					if (!result.isSuccess()) {
+						throw new CustomException(result.getErrors()[0].getMessage());
+					}
+
+					ret.put('data', result.Id);
+
+					sObjectId = result.Id;
+				}
+				when 'Faculty_Workshop' {
+					Opportunity newGrantApplication = (Opportunity) sObj;
+
+					List<Contact> existingCommunityMember = [
+						SELECT Id, Email, AccountId
+						FROM Contact
+						WHERE Email = :newGrantApplication.Email_Address__c
+					];
+
+					if (existingCommunityMember.size() == 0) {
+						newGrantApplication.AccountId = [
+							SELECT Id
+							FROM Account
+							WHERE Community_Registration_Default__c = TRUE
+							LIMIT 1
+						][0]
+						.Id;
+					} else {
+						newGrantApplication.AccountId = existingCommunityMember[0].AccountId;
+						newGrantApplication.Community_Member__c = existingCommunityMember[0].Id;
+					}
+
+					newGrantApplication.StageName = 'Application Received';
+					newGrantApplication.CloseDate = Date.today();
+					newGrantApplication.RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName()
+						.get('Workshop_Application')
+						.getRecordTypeId();
 
 					Database.UpsertResult result = Database.upsert(newGrantApplication, false);
 					if (!result.isSuccess()) {
