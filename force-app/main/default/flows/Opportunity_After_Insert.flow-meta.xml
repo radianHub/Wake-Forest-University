@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Faculty_Workshop_Submission</name>
+        <label>Faculty Workshop Submission</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <actionName>Opportunity.Faculty_Workshop_Submission</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Opportunity.Faculty_Workshop_Submission</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
         <name>Received_Email_Capacity_Building</name>
         <label>Received Email - Capacity Building</label>
-        <locationX>314</locationX>
-        <locationY>647</locationY>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Capacity_Building</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -20,8 +37,8 @@
     <actionCalls>
         <name>Received_Email_Institutional_Impact</name>
         <label>Received Email - Institutional Impact</label>
-        <locationX>578</locationX>
-        <locationY>647</locationY>
+        <locationX>842</locationX>
+        <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Institutional_Impact</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -37,8 +54,8 @@
     <actionCalls>
         <name>Received_Email_Professional_Development</name>
         <label>Received Email - Professional Development</label>
-        <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Professional_Development</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -54,8 +71,8 @@
     <actionCalls>
         <name>Received_Email_Teacher_Scholar</name>
         <label>Received Email - Teacher Scholar</label>
-        <locationX>842</locationX>
-        <locationY>647</locationY>
+        <locationX>1106</locationX>
+        <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Teacher_Scholar</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -72,8 +89,8 @@
     <decisions>
         <name>Has_Community_Member</name>
         <label>Has Community Member?</label>
-        <locationX>974</locationX>
-        <locationY>431</locationY>
+        <locationX>1238</locationX>
+        <locationY>539</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -92,9 +109,46 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Record_Type</name>
+        <label>Record Type?</label>
+        <locationX>974</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Workshop_Application</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Workshop_Application</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Faculty_Workshop_Submission</targetReference>
+            </connector>
+            <label>Workshop Application</label>
+        </rules>
+        <rules>
+            <name>Grant_Application</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Grant_Application</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Has_Community_Member</targetReference>
+            </connector>
+            <label>Grant Application</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Stage</name>
         <label>Stage?</label>
-        <locationX>1304</locationX>
+        <locationX>1568</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
@@ -108,7 +162,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Has_Community_Member</targetReference>
+                <targetReference>Record_Type</targetReference>
             </connector>
             <label>Application Received</label>
         </rules>
@@ -116,8 +170,8 @@
     <decisions>
         <name>Type</name>
         <label>Type?</label>
-        <locationX>578</locationX>
-        <locationY>539</locationY>
+        <locationX>842</locationX>
+        <locationY>647</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>Professional_Development</name>
@@ -203,7 +257,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>1178</locationX>
+        <locationX>1442</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Stage</targetReference>
