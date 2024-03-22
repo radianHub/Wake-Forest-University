@@ -33,7 +33,7 @@
         <isRequired>true</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>Proposal_Narative__c</field>
+        <field>Narrative__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>true</isRequired>
     </displayedFields>
