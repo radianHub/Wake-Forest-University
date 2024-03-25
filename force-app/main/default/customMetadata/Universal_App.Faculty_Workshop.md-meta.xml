@@ -36,6 +36,8 @@
     </values>
     <values>
         <field>Post_Submit_Fields__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">{
+&quot;Type&quot; : &quot;Faculty Development Submission&quot;
+}</value>
     </values>
 </CustomMetadata>
