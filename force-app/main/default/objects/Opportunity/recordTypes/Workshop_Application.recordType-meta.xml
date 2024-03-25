@@ -104,6 +104,14 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Conference Submission</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faculty Development Submission</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Institutional Impact</fullName>
             <default>false</default>
         </values>

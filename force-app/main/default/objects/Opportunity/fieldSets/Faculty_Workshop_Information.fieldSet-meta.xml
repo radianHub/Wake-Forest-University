@@ -3,7 +3,12 @@
     <fullName>Faculty_Workshop_Information</fullName>
     <description>Used in the universal app faculty workshop application</description>
     <displayedFields>
-        <field>Name</field>
+        <field>First_Name__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>true</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Last_Name__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>true</isRequired>
     </displayedFields>
@@ -33,12 +38,12 @@
         <isRequired>true</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>Narrative__c</field>
+        <field>Syllabus_es_File__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>true</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>Syllabus_es_File__c</field>
+        <field>Narrative__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>true</isRequired>
     </displayedFields>

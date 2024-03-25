@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Capacity-Building</fullName>
+        <default>false</default>
+        <label>Capacity-Building</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Conference Submission</fullName>
+        <default>false</default>
+        <label>Conference Submission</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Faculty Development Submission</fullName>
+        <default>false</default>
+        <label>Faculty Development Submission</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Institutional Impact</fullName>
+        <default>false</default>
+        <label>Institutional Impact</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Professional Development</fullName>
+        <default>false</default>
+        <label>Professional Development</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Teacher-Scholar</fullName>
+        <default>false</default>
+        <label>Teacher-Scholar</label>
+    </standardValue>
+</StandardValueSet>
