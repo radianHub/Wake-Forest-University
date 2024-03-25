@@ -343,16 +343,16 @@ public without sharing class UniversalApp {
 					sObjectId = result.Id;
 				}
 				when 'Faculty_Workshop' {
-					Opportunity newGrantApplication = (Opportunity) sObj;
+					Opportunity workshopSubmission = (Opportunity) sObj;
 
 					List<Contact> existingCommunityMember = [
 						SELECT Id, Email, AccountId
 						FROM Contact
-						WHERE Email = :newGrantApplication.Email_Address__c
+						WHERE Email = :workshopSubmission.Email_Address__c
 					];
 
 					if (existingCommunityMember.size() == 0) {
-						newGrantApplication.AccountId = [
+						workshopSubmission.AccountId = [
 							SELECT Id
 							FROM Account
 							WHERE Community_Registration_Default__c = TRUE
@@ -360,17 +360,18 @@ public without sharing class UniversalApp {
 						][0]
 						.Id;
 					} else {
-						newGrantApplication.AccountId = existingCommunityMember[0].AccountId;
-						newGrantApplication.Community_Member__c = existingCommunityMember[0].Id;
+						workshopSubmission.AccountId = existingCommunityMember[0].AccountId;
+						workshopSubmission.Community_Member__c = existingCommunityMember[0].Id;
 					}
 
-					newGrantApplication.StageName = 'Application Received';
-					newGrantApplication.CloseDate = Date.today();
-					newGrantApplication.RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName()
+					workshopSubmission.Name = workshopSubmission.First_Name__c + ' ' + workshopSubmission.Last_Name__c;
+					workshopSubmission.StageName = 'Application Received';
+					workshopSubmission.CloseDate = Date.today();
+					workshopSubmission.RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName()
 						.get('Workshop_Application')
 						.getRecordTypeId();
 
-					Database.UpsertResult result = Database.upsert(newGrantApplication, false);
+					Database.UpsertResult result = Database.upsert(workshopSubmission, false);
 					if (!result.isSuccess()) {
 						throw new CustomException(result.getErrors()[0].getMessage());
 					}
