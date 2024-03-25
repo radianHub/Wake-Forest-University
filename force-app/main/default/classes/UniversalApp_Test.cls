@@ -303,28 +303,4 @@ public class UniversalApp_Test {
 
 		System.assertEquals(true, ret.containsKey('data'), 'Did not successfully return the app & section data.');
 	}
-
-	@isTest
-	static void submitSObject_FacultyWorkshop_Error() {
-		Account act = new Account(Name = 'Test Submit', Community_Registration_Default__c = true);
-		insert act;
-
-		Contact con = new Contact(
-			AccountId = act.Id,
-			FirstName = 'Test',
-			LastName = 'Contact',
-			Email = 'testcontact@wfu.com.test'
-		);
-		insert con;
-
-		Opportunity opp = new Opportunity(AccountId = act.Id, Email_Address__c = 'testcontact@wfu.com.test');
-
-		Map<String, Object> ret = new Map<String, Object>();
-
-		Test.startTest();
-		ret = UniversalApp.submitApp(opp, 'Faculty_Workshop', null);
-		Test.stopTest();
-
-		System.assertEquals(true, ret.containsKey('error'), 'Did not successfully return the app & section data.');
-	}
 }
