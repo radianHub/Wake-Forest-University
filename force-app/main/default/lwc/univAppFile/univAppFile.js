@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
+import UnivAppFileLimit from '@salesforce/label/c.UnivAppFileLimit';
 
 export default class UnivAppFile extends LightningElement {
 	@api field;
@@ -6,6 +7,10 @@ export default class UnivAppFile extends LightningElement {
 	file;
 
 	@track files = [];
+
+	labels = {
+		UnivAppFileLimit,
+	};
 
 	// # HANDLERS
 
@@ -45,12 +50,4 @@ export default class UnivAppFile extends LightningElement {
 		}
 		return false;
 	}
-
-	// *
-	// get fileName() {
-	// 	if (this.file !== undefined) {
-	// 		return this.field.label + ' - ' + this.file.name;
-	// 	}
-	// 	return null;
-	// }
 }

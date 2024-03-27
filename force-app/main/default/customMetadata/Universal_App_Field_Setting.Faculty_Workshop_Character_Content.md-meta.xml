@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Faculty Workshop CV</label>
+    <label>Faculty Workshop Character Content</label>
     <protected>false</protected>
     <values>
         <field>Accepted_File_Types__c</field>
-        <value xsi:type="xsd:string">.pdf,.doc,.docx,.gdoc</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Expected_Field_Label__c</field>
-        <value xsi:type="xsd:string">Please upload a PDF of your CV (.pdf,.doc,.docx,.gdoc)</value>
+        <value xsi:type="xsd:string">What character content would you like to integrate into your new or existing course? Please describe what you have in mind in as much detail as possible at this stage, including the character themes and/or outcomes you would like to explore.</value>
     </values>
     <values>
         <field>Field_Name__c</field>
-        <value xsi:type="xsd:string">CV_File__c</value>
+        <value xsi:type="xsd:string">Character_Content__c</value>
     </values>
     <values>
         <field>Field_Set__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Type__c</field>
-        <value xsi:type="xsd:string">File</value>
+        <value xsi:type="xsd:string">Text</value>
     </values>
     <values>
         <field>URL__c</field>
@@ -32,6 +32,6 @@
     </values>
     <values>
         <field>Universal_App_Section__c</field>
-        <value xsi:type="xsd:string">Faculty_Workshop_Other_Information</value>
+        <value xsi:type="xsd:string">Faculty_Workshop_Character_Content</value>
     </values>
 </CustomMetadata>
