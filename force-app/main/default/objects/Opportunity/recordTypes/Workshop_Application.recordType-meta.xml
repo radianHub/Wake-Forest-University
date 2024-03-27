@@ -5,6 +5,17 @@
     <businessProcess>Workshop Application</businessProcess>
     <label>Workshop Application</label>
     <picklistValues>
+        <picklist>Course_Approved__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>ForecastCategoryName</picklist>
         <values>
             <fullName>Best Case</fullName>

@@ -7,7 +7,7 @@
 			accept={field.acceptedFileTypes}
 			onchange={handleChangeFile}
 			multiple></lightning-input>
-		<div>3.5 MB combined limit for all attachments</div>
+		<div>{labels.UnivAppFileLimit}</div>
 		<lightning-button-icon
 			lwc:if={hasFiles}
 			icon-name="utility:close"
