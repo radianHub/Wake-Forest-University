@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Expected_Field_Label__c</field>
-        <value xsi:type="xsd:string">Syllabus(es) for courses taught in which character integration is desired (.pdf,.doc,.docx,.gdoc)</value>
+        <value xsi:type="xsd:string">You may upload a PDF of an existing syllabus in which character integration is desired (.pdf,.doc,.docx,.gdoc)</value>
     </values>
     <values>
         <field>Field_Name__c</field>
@@ -32,6 +32,6 @@
     </values>
     <values>
         <field>Universal_App_Section__c</field>
-        <value xsi:type="xsd:string">Faculty_Workshop_Information</value>
+        <value xsi:type="xsd:string">Faculty_Workshop_Other_Information</value>
     </values>
 </CustomMetadata>

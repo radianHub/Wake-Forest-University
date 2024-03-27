@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Narrative__c</fullName>
+    <fullName>Other_Information__c</fullName>
     <externalId>false</externalId>
-    <label>Narrative</label>
-    <length>131072</length>
+    <label>Other Information</label>
+    <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>
     <type>LongTextArea</type>
     <visibleLines>25</visibleLines>
