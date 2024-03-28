@@ -32,6 +32,6 @@
     </values>
     <values>
         <field>Universal_App_Section__c</field>
-        <value xsi:type="xsd:string">Faculty_Workshop_Other_Information</value>
+        <value xsi:type="xsd:string">Faculty_Workshop_Files</value>
     </values>
 </CustomMetadata>
