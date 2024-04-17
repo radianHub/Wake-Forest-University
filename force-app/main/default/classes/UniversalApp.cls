@@ -380,6 +380,44 @@ public without sharing class UniversalApp {
 
 					sObjectId = result.Id;
 				}
+				when 'Conference_Workshop' {
+					Opportunity workshopSubmission = (Opportunity) sObj;
+
+					List<Contact> existingCommunityMember = [
+						SELECT Id, Email, AccountId
+						FROM Contact
+						WHERE Email = :workshopSubmission.Email_Address__c
+					];
+
+					if (existingCommunityMember.size() == 0) {
+						workshopSubmission.AccountId = [
+							SELECT Id
+							FROM Account
+							WHERE Community_Registration_Default__c = TRUE
+							LIMIT 1
+						][0]
+						.Id;
+					} else {
+						workshopSubmission.AccountId = existingCommunityMember[0].AccountId;
+						workshopSubmission.Community_Member__c = existingCommunityMember[0].Id;
+					}
+
+					// workshopSubmission.Name = workshopSubmission.First_Name__c + ' ' + workshopSubmission.Last_Name__c;
+					workshopSubmission.StageName = 'Application Received';
+					workshopSubmission.CloseDate = Date.today();
+					workshopSubmission.RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName()
+						.get('Workshop_Application')
+						.getRecordTypeId();
+
+					Database.UpsertResult result = Database.upsert(workshopSubmission, false);
+					if (!result.isSuccess()) {
+						throw new CustomException(result.getErrors()[0].getMessage());
+					}
+
+					ret.put('data', result.Id);
+
+					sObjectId = result.Id;
+				}
 				when else {
 					Database.UpsertResult result = Database.upsert(sObj, false);
 					if (!result.isSuccess()) {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Project_Abstract__c</fullName>
+    <fullName>X3rd_Submitter__c</fullName>
     <externalId>false</externalId>
-    <label>Project Abstract</label>
-    <length>10000</length>
+    <label>3rd Submitter</label>
+    <length>80</length>
+    <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <type>LongTextArea</type>
-    <visibleLines>3</visibleLines>
+    <type>Text</type>
+    <unique>false</unique>
 </CustomField>
