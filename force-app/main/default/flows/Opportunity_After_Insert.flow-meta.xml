@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Conference_Submission_Email</name>
+        <label>Conference Submission Email</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <actionName>Opportunity.Conference_Submission</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Opportunity.Conference_Submission</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
         <name>Faculty_Workshop_Submission</name>
         <label>Faculty Workshop Submission</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <actionName>Opportunity.Faculty_Workshop_Submission</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -20,7 +37,7 @@
     <actionCalls>
         <name>Received_Email_Capacity_Building</name>
         <label>Received Email - Capacity Building</label>
-        <locationX>578</locationX>
+        <locationX>1106</locationX>
         <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Capacity_Building</actionName>
         <actionType>emailAlert</actionType>
@@ -37,7 +54,7 @@
     <actionCalls>
         <name>Received_Email_Institutional_Impact</name>
         <label>Received Email - Institutional Impact</label>
-        <locationX>842</locationX>
+        <locationX>1370</locationX>
         <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Institutional_Impact</actionName>
         <actionType>emailAlert</actionType>
@@ -54,7 +71,7 @@
     <actionCalls>
         <name>Received_Email_Professional_Development</name>
         <label>Received Email - Professional Development</label>
-        <locationX>314</locationX>
+        <locationX>842</locationX>
         <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Professional_Development</actionName>
         <actionType>emailAlert</actionType>
@@ -71,7 +88,7 @@
     <actionCalls>
         <name>Received_Email_Teacher_Scholar</name>
         <label>Received Email - Teacher Scholar</label>
-        <locationX>1106</locationX>
+        <locationX>1634</locationX>
         <locationY>755</locationY>
         <actionName>Opportunity.Grant_Application_Received_Teacher_Scholar</actionName>
         <actionType>emailAlert</actionType>
@@ -89,7 +106,7 @@
     <decisions>
         <name>Has_Community_Member</name>
         <label>Has Community Member?</label>
-        <locationX>1238</locationX>
+        <locationX>1766</locationX>
         <locationY>539</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
@@ -111,7 +128,7 @@
     <decisions>
         <name>Record_Type</name>
         <label>Record Type?</label>
-        <locationX>974</locationX>
+        <locationX>1370</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
@@ -125,7 +142,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Faculty_Workshop_Submission</targetReference>
+                <targetReference>Type2</targetReference>
             </connector>
             <label>Workshop Application</label>
         </rules>
@@ -148,7 +165,7 @@
     <decisions>
         <name>Stage</name>
         <label>Stage?</label>
-        <locationX>1568</locationX>
+        <locationX>2030</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
@@ -170,7 +187,7 @@
     <decisions>
         <name>Type</name>
         <label>Type?</label>
-        <locationX>842</locationX>
+        <locationX>1370</locationX>
         <locationY>647</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
@@ -234,6 +251,43 @@
             <label>Teacher Scholar</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Type2</name>
+        <label>Type</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Faculty_Development</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Faculty Development Submission</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Faculty_Workshop_Submission</targetReference>
+            </connector>
+            <label>Faculty Development</label>
+        </rules>
+        <rules>
+            <name>Conference_Submission</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Conference Submission</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Conference_Submission_Email</targetReference>
+            </connector>
+            <label>Conference Submission</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Opportunity - After Insert</label>
@@ -257,7 +311,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>1442</locationX>
+        <locationX>1904</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Stage</targetReference>
