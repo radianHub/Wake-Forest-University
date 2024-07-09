@@ -125,21 +125,28 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 
 	// * SUBMITS THE RECORD AND CALLS A PAGE REDIRECT BASED ON A RETURNED BOOLEAN VALUE
 	submitSObj() {
+		console.log('start submitSObj');
 		this.savingData = true;
 
 		let urlRecordId;
 
-		let filesToInsert = [];
-
-		for (const fieldApiName of Object.keys(this.files)) {
-			this.sObj[fieldApiName] = true;
-			filesToInsert.push(...this.files[fieldApiName]);
-		}
-
+		let cvIdsToAdd = new Set();
+		console.log('files');
+		console.log(JSON.stringify(this.files));
+		this.files.forEach((value, key, map) => {
+			this.sObj[key] = true;
+			value.forEach((cvIds) => {
+				console.log('add cvId: ' + value);
+				cvIdsToAdd.add(cvIds);
+			});
+		});
+		console.log('cvIdsToAdd');
+		console.log(cvIdsToAdd);
+		console.log(Array.from(cvIdsToAdd));
 		submitSObj({
 			sObj: this.sObj,
 			application: this.appDevName,
-			filesString: JSON.stringify(filesToInsert),
+			cvIds: Array.from(cvIdsToAdd),
 		})
 			.then((result) => {
 				if (result.data) {
@@ -421,39 +428,52 @@ export default class UnivApp extends NavigationMixin(LightningElement) {
 
 	// # HANDLERS
 
-	@track files = {};
+	// @track files = {};
+	@track files = new Map();
 
-	handleSelectFile(event) {
+	handleAddFile(event) {
 		const apiName = event.detail.fieldApiName;
-		const fieldLabel = event.detail.fieldLabel;
-		const files = event.detail.files;
+		const contentVersions = event.detail.versionIds;
 
-		let fieldFiles = this.files[apiName];
-
-		if (fieldFiles === undefined) {
-			this.files[apiName] = [];
-		}
-
-		for (const file of files) {
-			let reader = new FileReader();
-			let base64;
-			let filename = fieldLabel + ' - ' + file.name;
-
-			reader.onload = () => {
-				base64 = reader.result.split(',')[1];
-				let obj = { ...this.files };
-
-				obj[apiName].push({ filename: filename, base64: base64 });
-				this.files = obj;
-			};
-			reader.readAsDataURL(file);
-		}
+		this.files.set(apiName, contentVersions);
 	}
 
 	handleRemoveFile(event) {
 		const apiName = event.detail.fieldApiName;
-		delete this.files[apiName];
+		this.files.delete(apiName);
 	}
+
+	// handleSelectFile(event) {
+	// 	const apiName = event.detail.fieldApiName;
+	// 	const fieldLabel = event.detail.fieldLabel;
+	// 	const files = event.detail.files;
+
+	// 	let fieldFiles = this.files[apiName];
+
+	// 	if (fieldFiles === undefined) {
+	// 		this.files[apiName] = [];
+	// 	}
+
+	// 	for (const file of files) {
+	// 		let reader = new FileReader();
+	// 		let base64;
+	// 		let filename = fieldLabel + ' - ' + file.name;
+
+	// 		reader.onload = () => {
+	// 			base64 = reader.result.split(',')[1];
+	// 			let obj = { ...this.files };
+
+	// 			obj[apiName].push({ filename: filename, base64: base64 });
+	// 			this.files = obj;
+	// 		};
+	// 		reader.readAsDataURL(file);
+	// 	}
+	// }
+
+	// handleRemoveFile(event) {
+	// 	const apiName = event.detail.fieldApiName;
+	// 	delete this.files[apiName];
+	// }
 
 	// * HANDLES THE DYNAMIC RENDERING AND REQUIRE OF FIELDS
 	onChangeHandler(event) {
