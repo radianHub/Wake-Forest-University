@@ -107,15 +107,18 @@ public class UniversalApp_Test {
 		Account act = new Account(Name = 'Test Submit');
 		Map<String, Object> ret = new Map<String, Object>();
 
-		List<UniversalApp.File> files = new List<UniversalApp.File>();
+		// List<UniversalApp.File> files = new List<UniversalApp.File>();
 
-		UniversalApp.File file = new UniversalApp.File();
-		file.filename = 'Test file';
-		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+		// UniversalApp.File file = new UniversalApp.File();
+		// file.filename = 'Test file';
+		// file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
 
-		files.add(file);
+		// files.add(file);
 
-		ret = UniversalApp.submitApp(act, null, JSON.serialize(files));
+		// ret = UniversalApp.submitApp(act, null, JSON.serialize(files));
+		List<Id> cvIds = new List<Id>();
+		cvIds.add(createContentVersion());
+		ret = UniversalApp.submitApp(act, null, cvIds);
 
 		// Fail scenario
 		Account actNull = null;
@@ -138,15 +141,18 @@ public class UniversalApp_Test {
 
 		Map<String, Object> ret = new Map<String, Object>();
 
-		List<UniversalApp.File> files = new List<UniversalApp.File>();
+		// List<UniversalApp.File> files = new List<UniversalApp.File>();
 
-		UniversalApp.File file = new UniversalApp.File();
-		file.filename = 'Test file';
-		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+		// UniversalApp.File file = new UniversalApp.File();
+		// file.filename = 'Test file';
+		// file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
 
-		files.add(file);
+		// files.add(file);
 
-		ret = UniversalApp.submitApp(con, 'Registration', JSON.serialize(files));
+		// ret = UniversalApp.submitApp(con, 'Registration', JSON.serialize(files));
+		List<Id> cvIds = new List<Id>();
+		cvIds.add(createContentVersion());
+		ret = UniversalApp.submitApp(con, 'Registration', cvIds);
 
 		// Fail scenario
 		Contact conNull = null;
@@ -177,16 +183,19 @@ public class UniversalApp_Test {
 
 		Map<String, Object> ret = new Map<String, Object>();
 
-		List<UniversalApp.File> files = new List<UniversalApp.File>();
+		// List<UniversalApp.File> files = new List<UniversalApp.File>();
 
-		UniversalApp.File file = new UniversalApp.File();
-		file.filename = 'Test file';
-		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+		// UniversalApp.File file = new UniversalApp.File();
+		// file.filename = 'Test file';
+		// file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
 
-		files.add(file);
+		// files.add(file);
 
 		Test.startTest();
-		ret = UniversalApp.submitApp(con2, 'Registration', JSON.serialize(files));
+		// ret = UniversalApp.submitApp(con2, 'Registration', JSON.serialize(files));
+		List<Id> cvIds = new List<Id>();
+		cvIds.add(createContentVersion());
+		ret = UniversalApp.submitApp(con2, 'Registration', cvIds);
 		Test.stopTest();
 
 		System.assertEquals(true, ret.containsKey('error'), 'Did not successfully return the app & section data.');
@@ -209,15 +218,18 @@ public class UniversalApp_Test {
 
 		Map<String, Object> ret = new Map<String, Object>();
 
-		List<UniversalApp.File> files = new List<UniversalApp.File>();
+		// List<UniversalApp.File> files = new List<UniversalApp.File>();
 
-		UniversalApp.File file = new UniversalApp.File();
-		file.filename = 'Test file';
-		file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
+		// UniversalApp.File file = new UniversalApp.File();
+		// file.filename = 'Test file';
+		// file.base64 = EncodingUtil.base64Encode(Blob.valueOf('data'));
 
-		files.add(file);
+		// files.add(file);
 
-		ret = UniversalApp.submitApp(opp, 'Grant_Application', JSON.serialize(files));
+		// ret = UniversalApp.submitApp(opp, 'Grant_Application', JSON.serialize(files));
+		List<Id> cvIds = new List<Id>();
+		cvIds.add(createContentVersion());
+		ret = UniversalApp.submitApp(opp, 'Grant_Application', cvIds);
 	}
 
 	@isTest
@@ -302,5 +314,31 @@ public class UniversalApp_Test {
 		Test.stopTest();
 
 		System.assertEquals(true, ret.containsKey('data'), 'Did not successfully return the app & section data.');
+	}
+
+	@isTest
+	static void deleteFiles() {
+		List<Id> cvIds = new List<Id>();
+		cvIds.add(createContentVersion());
+		
+
+		Test.startTest();
+		UniversalApp.deleteFiles(cvIds);
+		Test.stopTest();
+
+		
+		List<ContentVersion> results = [SELECT Id FROM ContentVersion WHERE Id IN :cvIds];
+		System.assertEquals(true, results.size() == 0, 'Did not successfully delete the files.');
+	}
+
+	static Id createContentVersion() {
+		ContentVersion cv = new ContentVersion(
+			Title = 'Test file',
+			PathOnClient = 'Testfile.pdf',
+			VersionData = Blob.valueOf('Test file content')
+		);
+		insert cv;
+
+		return cv.Id;
 	}
 }

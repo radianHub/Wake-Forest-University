@@ -1,25 +1,32 @@
 <template>
 	<main>
-		<lightning-input
-			type="file"
-			variant="label-hidden"
-			name={field.api}
+		<lightning-file-upload
+			label={label}
 			accept={field.acceptedFileTypes}
-			onchange={handleChangeFile}
-			multiple></lightning-input>
-		<div>{labels.UnivAppFileLimit}</div>
+			name={field.api}
+			onuploadfinished={handleUploadFinished}
+			record-id=""
+			required={field.req}
+			multiple></lightning-file-upload>
+		<!-- 
+			file-field-name="" - custom field on ContentDocument
+			file-field-value="" - custom field value on ContentDocument
+			record-id="" - associate directly to a record
+			onchange={handleFileUploaded}
+		-->
+
 		<lightning-button-icon
 			lwc:if={hasFiles}
 			icon-name="utility:close"
 			variant="container"
-			alternative-text="Remove"
-			title="Remove"
+			alternative-text="Delete"
+			title="Delete"
 			size="large"
-			onclick={handleClickRemove}></lightning-button-icon>
+			onclick={handleClickDelete}></lightning-button-icon>
 	</main>
 	<template
 		for:each={files}
 		for:item="file">
-		<p key={file.lastModified}>Selected File: {file.name}</p>
+		<p key={file.documentId}>Selected File: {file.name}</p>
 	</template>
 </template>

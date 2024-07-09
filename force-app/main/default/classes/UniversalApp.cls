@@ -275,7 +275,7 @@ public without sharing class UniversalApp {
 	}
 
 	@AuraEnabled
-	public static Map<String, Object> submitApp(SObject sObj, String application, String filesString) {
+	public static Map<String, Object> submitApp(SObject sObj, String application, List<Id> cvIds) {
 		Map<String, Object> ret = new Map<String, Object>();
 
 		Id sObjectId;
@@ -428,19 +428,19 @@ public without sharing class UniversalApp {
 					sObjectId = result.Id;
 				}
 			}
+			if (cvIds.size() > 0) {
+			// if (cdIdsString != null) {
+				// List<Id> cdIds = (List<Id>) JSON.deserialize(cdIdsString, List<Id>.class);
+			// 	List<ContentDocumentLink> cdls = new List<ContentDocumentLink>();
+			// 	for(Id cvId : cvIds) {
+			// 		cdls.add(createContentLink(cvId, sObjectId));
+			// 	}
 
-			if (filesString != null) {
-				List<File> filesList = (List<File>) JSON.deserialize(filesString, List<File>.class);
+			// 	insert cdls;
 
-				List<File> files = new List<File>();
-				for (File file : filesList) {
-					File newFile = new File();
-					newFile.base64 = file.base64;
-					newFile.fileName = file.filename;
-					files.add(newFile);
-				}
-				uploadFiles(files, sObjectId);
+				createContentDocumentLinks(cvIds, sObjectId);
 			}
+
 		} catch (CustomException customException) {
 			ret.put('error', customException.getMessage());
 		} catch (Exception e) {
@@ -452,52 +452,48 @@ public without sharing class UniversalApp {
 		return ret;
 	}
 
-	//  public static String uploadFiles(String base64, String filename, String recordId) {
-	public static void uploadFiles(List<File> files, Id sObjectId) {
-		List<ContentVersion> contentVersionsToInsert = new List<ContentVersion>();
-		List<ContentDocumentLink> contentDocumentLinksToInsert = new List<ContentDocumentLink>();
+	private static void createContentDocumentLinks(List<Id> cvIds, Id recordId){
+		List<Id> cdIds = new List<Id>();
+		List<ContentDocumentLink> cdls = new List<ContentDocumentLink>();
 
-		for (File file : files) {
-			ContentVersion cv = createContentVersion(file.base64, file.filename);
-			contentVersionsToInsert.add(cv);
+		if(cvIds == null || recordId == null) {
+			return;
 		}
-		insert contentVersionsToInsert;
 
-		for (ContentVersion contVersion : contentVersionsToInsert) {
-			ContentDocumentLink cdl = createContentLink(contVersion.Id, sObjectId);
-			contentDocumentLinksToInsert.add(cdl);
+		for(ContentVersion cv : [SELECT ContentDocumentId FROM ContentVersion WHERE Id IN :cvIds]) {
+			cdIds.add(cv.ContentDocumentId);
 		}
-		insert contentDocumentLinksToInsert;
+
+		for(Id cdId : cdIds) {
+			cdls.add(createContentLink(cdId, recordId));
+		}
+
+		if(cdls.size() > 0){
+			insert cdls;
+		}
 	}
 
-	private static ContentVersion createContentVersion(String base64, String filename) {
-		ContentVersion cv = new ContentVersion();
-		cv.VersionData = EncodingUtil.base64Decode(base64);
-		cv.Title = filename;
-		cv.PathOnClient = filename;
-		return cv;
-	}
-
-	private static ContentDocumentLink createContentLink(String contentVersionId, String recordId) {
-		if (contentVersionId == null || recordId == null) {
-			return null;
-		}
+	private static ContentDocumentLink createContentLink(Id contentDocumentId, Id recordId) {
 		ContentDocumentLink cdl = new ContentDocumentLink();
-		cdl.ContentDocumentId = [
-			SELECT ContentDocumentId
-			FROM ContentVersion
-			WHERE Id = :contentVersionId
-		]
-		.ContentDocumentId;
-
+		cdl.ContentDocumentId = contentDocumentId;
 		cdl.LinkedEntityId = recordId;
 		cdl.ShareType = 'V';
 		return cdl;
 	}
 
-	public class File {
-		public String filename;
-		public string base64;
+	@AuraEnabled
+	public static void deleteFiles(List<Id> contentVersionIds){
+		List<ContentDocument> cdsToDelete = new List<ContentDocument>();
+		try {
+			for(ContentVersion cv : [SELECT ContentDocumentId FROM ContentVersion WHERE Id IN :contentVersionIds]){
+				cdsToDelete.add(new ContentDocument(Id = cv.ContentDocumentId));
+			}
+
+			delete cdsToDelete;
+			
+		} catch (Exception e) {
+			throw new AuraHandledException(e.getMessage());
+		}
 	}
 
 	public class CustomException extends Exception {
