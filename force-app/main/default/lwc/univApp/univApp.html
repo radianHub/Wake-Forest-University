@@ -92,7 +92,15 @@
 												<div
 													key={field.api}
 													class={section.columnClass}>
-													<template if:true={field.hasAltLabel}>
+													<template lwc:if={field.isFile}>
+														<div class="altLabelContainer">
+															<c-univ-app-file
+																field={field}
+																onfilesuploaded={handleAddFile}
+																onfileremoved={handleRemoveFile}></c-univ-app-file>
+														</div>
+													</template>
+													<template lwc:elseif={field.hasAltLabel}>
 														<template if:true={hasValue}>
 															<div class="altLabelContainer">
 																<div class="altLabel">
@@ -113,13 +121,7 @@
 																	</template>
 																</div>
 
-																<template lwc:if={field.isFile}>
-																	<c-univ-app-file
-																		field={field}
-																		onfileselected={handleSelectFile}
-																		onfileremoved={handleRemoveFile}></c-univ-app-file>
-																</template>
-																<template lwc:elseif={field.isLink}>
+																<template lwc:if={field.isLink}>
 																	<lightning-button
 																		label={field.altLabel}
 																		onclick={handleClickLink}
@@ -158,13 +160,7 @@
 																		</label>
 																	</template>
 																</div>
-																<template lwc:if={field.isFile}>
-																	<c-univ-app-file
-																		field={field}
-																		onfileselected={handleSelectFile}
-																		onfileremoved={handleRemoveFile}></c-univ-app-file>
-																</template>
-																<template lwc:elseif={field.isLink}>
+																<template lwc:if={field.isLink}>
 																	<lightning-button
 																		label={field.altLabel}
 																		onclick={handleClickLink}
@@ -183,8 +179,8 @@
 															</div>
 														</template>
 													</template>
-													<template if:false={field.hasAltLabel}>
-														<template if:true={hasValue}>
+													<template lwc:else>
+														<template lwc:if={hasValue}>
 															<lightning-input-field
 																field-name={field.api}
 																required={field.req}
@@ -193,22 +189,14 @@
 																onchange={onChangeHandler}
 																disabled={finished}></lightning-input-field>
 														</template>
-														<template if:false={hasValue}>
-															<template lwc:if={field.isFile}>
-																<c-univ-app-file
-																	field={field}
-																	onfileselected={handleSelectFile}
-																	onfileremoved={handleRemoveFile}></c-univ-app-file>
-															</template>
-															<template lwc:else>
-																<lightning-input-field
-																	field-name={field.api}
-																	required={field.req}
-																	variant="label-stacked"
-																	value={field.value}
-																	onchange={onChangeHandler}
-																	disabled={finished}></lightning-input-field>
-															</template>
+														<template lwc:else>
+															<lightning-input-field
+																field-name={field.api}
+																required={field.req}
+																variant="label-stacked"
+																value={field.value}
+																onchange={onChangeHandler}
+																disabled={finished}></lightning-input-field>
 														</template>
 													</template>
 												</div>
